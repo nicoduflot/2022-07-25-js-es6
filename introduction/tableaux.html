@@ -8,7 +8,155 @@
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <script src="../js/bootstrap.bundle.js"></script>
     <script language="javascript">
-        
+        //  avant es6
+        /*
+        var tableau = new Array('valeur', 1, 1.2, 'Renault');
+        console.log(tableau);
+        */
+
+        let tableau = ['valeur', 1, 1.2, 'Renault'];
+        console.log(tableau);
+
+        let cars = ['Peugeot', 'Citroën', 'Ford', 'Renault'];
+        console.log(cars);
+        console.table(cars);
+        console.log(cars[1]);
+        console.log(`le tableau cars contient ${cars.length} élément(s) `);
+
+        // les tableau sont l'équivalent d'objets itérables
+
+        console.log('----------------- boucle for -------------');
+        for(let i = 0; i < cars.length; i++){
+            console.log(`la valeur de cars à l'indice ${i} est ${cars[i]}`);
+        }
+
+        console.log('----------------- boucle for in -------------');
+        for(let index in cars){
+            console.log(`la valeur de cars à l'index ${index} est ${cars[index]}`);
+        }
+
+        // le for in permet aussi de "regarder" tous les éléments (attributs ou méthodes) d'un objet
+
+        let obj = {
+            nom: 'Duflot',
+            prenom: 'Nicolas',
+            presentation: function(){
+                return `je m'appele ${this.prenom} ${this.nom}`;
+            }
+        };
+
+        console.log(obj);
+        console.log(obj.nom);
+        console.log(obj.presentation);
+        console.log(obj.presentation());
+
+        for(let key in obj){
+            console.log(`la clef ${key} est ${obj[key]}`);
+        }
+
+        let obj2 = {
+            nom: 'Sno',
+            prenom: 'Jon',
+            presentation: function(){
+                return `je m'appele ${this.prenom} ${this.nom} et je connais rien`;
+            }
+        };
+
+        console.log(obj2);
+        console.log(obj2.nom);
+        console.log(obj2.presentation);
+        console.log(obj2.presentation());
+
+        // depuis es6
+        console.log('----------------- boucle for of -------------');
+        for(let value of cars){
+            console.log(`la valeur actuelle dans le tableau cars est ${value}`);
+        }
+
+        console.log('----------- boucle tant que -------------');
+        let cpt = 0;
+        while(cpt < cars.length){
+            console.log(cars[cpt]);
+            cpt++;
+        }
+
+        console.log('----------- boucle faire tant que -------------');
+        cpt = 0;
+        do{
+
+            if(cars[cpt]){
+                console.log(cars[cpt]);
+            }
+            cpt++;
+        }
+        while(cpt < cars.length)
+
+        // forEach
+        console.log('----------- méthode forEach -------------');
+        cars.forEach( function(value, index, tab){
+            console.log(`à l'index ${index} du tableau ${cars} | ${tab} la valeur est ${value}`);
+        });
+
+        // es6 méthode .entries()
+        /*
+        vient du modèle objet. permet d'extraire les clafs et les valeurs d'un tableau sous la forme d'un tableau de deux éléments,
+        le premier étant la clef, le second la valeur
+        */
+
+        console.log('----------- méthode .entries() -------------');
+        for(let entry of cars.entries()){
+            console.log(entry);
+        }
+
+        // ajout d'élément
+        // la méthode sale
+        cars[cars.length] = 'Hyundai';
+        console.log(cars);
+
+        cars.push('Seat');
+        cars.push('Fiat', 'Toyota');
+
+        console.log(cars);
+
+        let tabMoche = [];
+        tabMoche[0] = 'truc';
+        tabMoche[1] = 'Machin';
+        tabMoche[5] = 'Bidule';
+        tabMoche[2] = 'Oulala';
+
+        console.log(tabMoche);
+
+        for(let i = 0; i < tabMoche.length; i++){
+            console.log(`la valeur de cars à l'indice ${i} est ${tabMoche[i]}`);
+        }
+
+        // supprimer des valeurs d'un tableau
+        // .pop(), .shift(), .splice()
+
+        // .pop() => extrait la dernière valeur du tableau
+        let lastEntry = cars.pop();
+        console.log(cars);
+        console.log(lastEntry);
+        // .shift() => extrait la première valeur du tableau et décale (shift) les index
+        let firstEntry = cars.shift();
+        console.log(cars);
+        console.log(firstEntry);
+
+        // splice() 1 :  extraire des valeurs dans le tableau (retourne un tableau)
+        let removed = cars.splice(cars.indexOf('Ford'), 2);
+        console.log(cars);
+        console.log(removed);
+
+        // splice() 2 : remplacer des valeurs dans le tableau (retourne un tableau)
+        let replaced = cars.splice(cars.indexOf('Citroën'), 2, 'Alpine', 'Mazda');
+        console.log(cars);
+        console.log(replaced);
+
+        // splice() 3 : inserrer des valeurs dans le tableau
+        cars.splice(cars.indexOf('Mazda'), 0, removed[0], removed[1], replaced[0], replaced[1], firstEntry, lastEntry);
+        console.log(cars);
+
+        /* faire une copie du tableau cars dans un tableau appelé carsClone */
         
     </script>
 </head>
