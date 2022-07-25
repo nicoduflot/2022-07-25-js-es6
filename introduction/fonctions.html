@@ -8,7 +8,99 @@
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <script src="../js/bootstrap.bundle.js"></script>
     <script language="javascript">
-                
+        let intNumber = parseInt('12'); // une fonction
+        let deuxPowtrois = Math.pow(2, 3); // la méthode de la classe Math
+
+        function coucou(){
+            return 'coucou';
+        }
+
+        console.log(coucou());
+
+        function coucouMachin(machin){
+            return `coucou ${machin}`;
+        }
+
+        console.log(coucouMachin('Nicolas'));
+
+        // ... rest parameter ou spread parameter
+
+        function addition(test, ...valeurs){
+            let resultat = 0;
+            console.log(valeurs);
+            for(let valeur of valeurs){
+                if(!isNaN(valeur)){
+                    resultat = resultat + parseFloat(valeur);
+                }
+            }
+            return resultat;
+        }
+
+        console.log(addition(1,2,3,4,5.8,'6',7,'coucou',9));
+
+        // fonction anonyme
+
+        let maFonctionAnonyme = function(name = ''){
+            let test = 'coucou';
+            return `${test} ${name}`;
+        };
+
+        console.log(maFonctionAnonyme());
+        console.log(maFonctionAnonyme('Toto'));
+
+        let maFonctionAnonyme2 = (name = null) => {
+            // un if simple peut être écris plus simplement
+            /*
+            if(null === name){
+                return 'Hello Kitty';
+            }else{
+                return `Hello ${name}`;
+            }
+            */
+            // le ternaire
+            // (condition)? résultat si la condition est vraie : résultat si la condition est fausse ;
+            //return (null === name)? 'Hello Kitty' : `Hello ${name}`;
+            return `Hello ${ (null === name)? 'Kitty' : name }`;
+        };
+
+        console.log(maFonctionAnonyme2());
+        console.log(maFonctionAnonyme2('Boss'));
+
+        // fonction auto éxécutée
+        /*
+        (fonction anonyme a éxécuter avec ou sans paramètres)(les paramètre de la fonction anonyme);
+        */
+
+        (
+          function(name){
+            console.log(`coucou ${name}`);
+          }  
+        )('Nicolas');
+
+        /*
+        exercice
+        
+        créer une fonction qui va parcourir un tableau de données et renvoyer une liste des doublons dans le tableau
+
+        */
+
+        let tableauDeFruits = [
+            'banane',
+            'fraise',
+            'tomate',
+            'pêche',
+            'banane',
+            'tomate',
+            'banane',
+            'fraise',
+            'tomate',
+            'pêche',
+            'banane',
+            'tomate'
+        ];
+
+
+
     </script>
 </head>
 <body>
