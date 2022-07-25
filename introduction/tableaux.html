@@ -157,6 +157,107 @@
         console.log(cars);
 
         /* faire une copie du tableau cars dans un tableau appelé carsClone */
+        let carsClone = cars.slice();
+        carsClone.pop();
+        console.log(carsClone);
+        console.log(cars);
+        cars.reverse(); // pas un tri, inverse toutes les données du tableau le derniers éléments se retrouve à l'indice 0, etc.
+        console.log(cars);
+        cars.sort();
+        console.log(cars);
+        let motTeste = 'kayak';
+        let test = motTeste.split('');
+        test = test.reverse();
+        if(motTeste === test.join('')){
+            console.log(`motTeste est un palyndrome`);
+        }
+
+        // et les tableau à 2 dimensions
+        carsTest = [ ['Fiat', 1956], ['Kyia', 1995], ['Kyia', 1990], ['Ford', 1950], ['12', '2001'], ['12', '0250'] ];
+        console.table(carsTest);
+        carsTest.sort();
+        console.table(carsTest);
+        // les tableaux à deux dimension ne sont pas applicable en javascript
+        let tab2d = [ ['a', 'b', 'c'], [12, 12, 13, 14, 15], [10, 23, 56, 4] ];
+        console.log(tab2d);
+        console.log(tab2d[1]);
+        console.log(tab2d[1][2]);
+        console.table(tab2d);
+        console.log('------ parcourir tab2 for ----------');
+        for(let i = 0; i < tab2d.length; i++ ){
+            for(let j = 0; j < tab2d[i].length; j++){
+                console.log(tab2d[i][j]);
+            }
+        }
+
+        // avec un for of
+        for(let value of tab2d){
+            for(let subValue of value){
+                console.log(subValue);
+            }
+        }
+
+        //  recherche de la présence d'un élément
+
+        // .find()
+        console.log('----------- .find() ------------');
+        let arrayNum = [5, 8, 12, 130, 3, 44];
+
+        let found = arrayNum.find( function(element){
+            return 20 < element;
+        } );
+
+        console.log(found);
+
+        // .filter() => retourne toutes les occurences correpondant à la condition
+        /*
+        let foundFilter = arrayNum.filter( function(element){
+            return 20 < element;
+        } );
+        */
+       // opérateur arrow => raccourcis d'écriture des fonction de rappel ou callback function ou fonction anonyme
+        /*
+        let foundFilter = arrayNum.filter( (element)=>{
+            return 20 < element;
+        } );
+        */
+        /*
+        let foundFilter = arrayNum.filter( (element)=>20 < element );
+        */
+
+        console.log(arrayNum.filter( (element)=> 20 < element ));
+
+        // les fonctions anonyme peuvent avoir des conséquences (notamment sur les objets)
+        console.log('--------- les conséquences -----------');
+        let monObjet = {
+            numbers: [5, 8, 12, 130, 3, 44],
+            affTab: function(){
+                console.log(this);
+                let _this = this;
+                this.numbers.forEach(function(value){
+                    //console.log(this);
+                    //console.log(_this);
+                });
+            },
+            affTabArrow: function(){
+                console.log(this);
+                this.numbers.forEach( (value)=>{
+                    console.log(this);
+                });
+            }
+        }
+
+        monObjet.affTab();
+        monObjet.affTabArrow();
+
+        // .map
+        let numbers = [5, 8, 12, 130, 3, 44];
+        let newNumbers = numbers.map(function(toto, i, tab){
+            return toto*10;
+        });
+
+        console.log(numbers);
+        console.log(newNumbers);
         
     </script>
 </head>
