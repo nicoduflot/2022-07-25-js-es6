@@ -104,7 +104,8 @@
         console.log(tableauDeFruits);
         let cptFruit = 1;
         let temptFruit = '';
-        tableauDeFruits.map((element, index) => {
+        
+        tableauDeFruits.forEach((element, index) => {
             if(element === tableauDeFruits[index+1]){
                 cptFruit = cptFruit+1
             }else{
@@ -114,18 +115,7 @@
         });
         console.log(tableauxDoublons);
         
-        /*
-        let tableauxDoublonsKikou = [];
-        tableauDeFruits.forEach(function(element){
-            tableauxDoublonsKikou[element] = tableauxDoublonsKikou[element] + 1 || 1;
-        });
-
-        console.log(tableauxDoublonsKikou);
-        for(key of tableauxDoublonsKikou){
-            console.log(key);
-        }
         
-        */
 
 
     </script>
