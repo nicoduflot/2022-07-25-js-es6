@@ -7,8 +7,88 @@
     <title>Formation Javascript Es6</title>
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <script src="../js/bootstrap.bundle.js"></script>
-</head>
+    <script language="javascript">
+        // Script js en page
+        /*
+        Commentaire en bloc
+        */
+        
+        // variables : les déclarations de variables
+        var prenom = 'Jean';
+        console.log(prenom);
+        console.log(typeof prenom);
+        prenom = 12;
+        console.log(prenom);
+        console.log(typeof prenom);
+        prenom = 'Jean';
+        console.log(prenom * 5);
+        prenom = '12';
+        console.log(typeof prenom);
+        console.log(prenom * 5);
+        prenom = 'jean';
+        prenom = prenom + 12;
+        console.log(prenom);
+        console.log(typeof prenom);
 
+        function test(){
+            var prenom = 'toto';
+        }
+
+        test();
+        console.log(prenom);
+
+        // depuis es6 il est recommandé de déclarer les variables ainsi
+        let nom = 'l\'oreal';
+        console.log(nom);
+        function test2(){
+            let nom = 'toto';
+        }
+
+        test2();
+        console.log(nom);
+
+        // constantes
+        const LANGFR = 'FR-fr';
+        const LANGEN = 'EN-en';
+        const LANGUS = 'EN-us';
+        const POUND = '£';
+        const DOLLAR = '$';
+        const EURO = '€';
+
+        // afficher des variables dans du texte
+        //avant es6 
+        console.log('le prénom est ' + prenom + ' et le nom est ' + nom);
+        console.log(`le prénom est \n \t${prenom} et le nom est ${nom}`);
+
+        /*
+        JS est un langage prototypé : défini par l'objet
+        */
+
+       let tab = ['ert', 'rtbf'];
+       console.log(tab);
+       console.log(tab.length);
+       console.log(typeof tab);
+
+       // JS est un langage non typé
+       /**
+        * Type 
+        * [primitif]
+        * number            =>, nombre (entier ou a virgule flottante)
+        * bool              => Booléen true or false
+        * 
+        * [reference]
+        * String            => chaîne de caractère
+        * Array             => tableau de données
+        * Object            => Object
+        * JSON              => JavaScript Object Notation
+        * 
+       */
+
+       
+
+
+    </script>
+</head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
