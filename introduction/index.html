@@ -64,10 +64,10 @@
         JS est un langage prototypé : défini par l'objet
         */
 
-       let tab = ['ert', 'rtbf'];
-       console.log(tab);
-       console.log(tab.length);
-       console.log(typeof tab);
+        let tab = ['ert', 'rtbf'];
+        console.log(tab);
+        console.log(tab.length);
+        console.log(typeof tab);
 
        // JS est un langage non typé
        /**
@@ -146,10 +146,63 @@
         /*  créer deux variables nombre et afficher : 
             leur addition
             leur soustraction
+            leur multiplication
             leur division
             le modulo
-            var1 puissance var 2
+            var1 puissance var2
         */
+
+        let a = 12;
+        let b = 24;
+
+        console.log(`tata`); // toléré
+        console.log('tata'); // meilleure façon pour juste du texte
+
+        console.log(`a : ${a}, b : ${b}`);
+        console.log(`a + b = ${a+b}`);
+        console.log('a + b = ' + a + b);
+        console.log('a + b = ' + (a + b));
+        console.log(`a * b = ${a*b}`);
+        console.log(`a / b = ${a/b}`);
+        console.log(`a % b = ${a%b}`);
+        console.log(`a**b = ${a**b}`);
+
+        /*
+        // petit bout de java
+        String a = "Chaîne";
+        a.equal("Chaîne"); // retourne vrai
+
+        String b = null;
+        b.equal("Chaîne"); // retourne erreur NullPointerException
+
+        // yoda code
+        "Chaîne".equal(b); // retoune faux
+        */
+
+       /**
+        * Opérateurs de comparaison
+        * 
+        * < strictement inférieur
+        * > strictement supérieur
+        * <= inférieur ou égal
+        * >= suppérieur ou égal
+        * 
+        * ==    égalité sur la valeur
+        * !=    non égalité (différent) sur la valeur
+        * 
+        * ===   égalité sur la valeur ET le type
+        * !==   non égalité (différent) sur la valeur ET le type
+        * 
+       */
+
+       console.log(`'12' == 12 => ${'12' == 12}`); // => retourne vrai
+       console.log(`'12' === 12 => ${'12' === 12}`); // => retourne faux
+
+       function test3(){
+        return 12*3;
+       }
+
+       console.log(`${12*12} = 12x12, test3 = ${test3()}`);
         
     </script>
 </head>
@@ -171,7 +224,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
