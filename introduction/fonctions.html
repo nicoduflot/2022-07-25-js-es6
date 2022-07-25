@@ -99,6 +99,33 @@
             'tomate'
         ];
 
+        let tableauxDoublons = [];
+        tableauDeFruits.sort();
+        console.log(tableauDeFruits);
+        let cptFruit = 1;
+        let temptFruit = '';
+        tableauDeFruits.map((element, index) => {
+            if(element === tableauDeFruits[index+1]){
+                cptFruit = cptFruit+1
+            }else{
+                tableauxDoublons.push(`${element} ${cptFruit} fois`);
+                cptFruit = 1;
+            }
+        });
+        console.log(tableauxDoublons);
+        
+        /*
+        let tableauxDoublonsKikou = [];
+        tableauDeFruits.forEach(function(element){
+            tableauxDoublonsKikou[element] = tableauxDoublonsKikou[element] + 1 || 1;
+        });
+
+        console.log(tableauxDoublonsKikou);
+        for(key of tableauxDoublonsKikou){
+            console.log(key);
+        }
+        
+        */
 
 
     </script>
