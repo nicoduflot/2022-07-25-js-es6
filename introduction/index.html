@@ -84,9 +84,66 @@
         * 
        */
 
-       
+       /**
+        * Opérateurs
+        * 
+        * Mathématiques
+        * 
+        * + addition (et aussi la concaténation)
+        * - 
+        * /
+        * %
+        * *
+        * **    (Math.pow(2,3) => 8)
+        *       2**3 => 8
+        * 
+        * incrémentation
+        * ++
+        * décrémentation
+        * --
+       */
 
+        let cpt = 0;
+        cpt = cpt + 1;      // ajoute 1 à cpt => 1
+        console.log(cpt); // affiche 1
+        cpt++;              // ajoute 1 à cpt => 2
+        console.log(cpt);  // affiche 2
+        console.log(cpt++); // affiche 2 puis passe cpt à 3
+        console.log(cpt) // affiche 3
+        console.log(++cpt); //  ajoute 1 à cpt puis affiche 4
 
+        console.log(cpt--); // affiche 4 puis passe cpt à 3
+        console.log(cpt); // affiche 3
+        console.log(--cpt); // passe à 2 puis affiche 2
+
+        /**
+         * Logique 
+         * 
+         * && (ET)
+         *      a && b      => si a est vrai et b est vrai  => vrai
+         *                  => si a est vrai et b est faux  => faux
+         *                  => si a est faux et b est vrai  => faux
+         *                  => si a est faux et b est faux  => faux
+         * 
+         * || (OU)
+         *      a || b      => si a est vrai et b est vrai  => vrai
+         *                  => si a est vrai et b est faux  => vrai
+         *                  => si a est faux et b est vrai  => vrai
+         *                  => si a est faux et b est faux  => faux
+         * 
+         * ! (NON)
+         *      !a          => si a est vrai => faux
+         *                  => si a est faux => vrai
+         * 
+         * ^ (NON OU XOR) : Ou exclusif binaire
+         *      a ^ b       => si a est vrai et b est vrai  => faux
+         *                  => si a est vrai et b est faux  => vrai
+         *                  => si a est faux et b est vrai  => vrai
+         *                  => si a est faux et b est faux  => faux
+         * 
+        */
+
+        
     </script>
 </head>
 <body>
