@@ -14,9 +14,14 @@ loaded(function(){
         console.log(paragraph);
         paragraph.addEventListener('mouseover', function(){
            s('#showP').innerText = this.innerHTML;
-           this.classList.add('alert', 'alert-success');
+           this.classList.add('alert', 'alert-success', 'test');
         });
-    } );
+
+        paragraph.addEventListener('mouseout', function(){
+            s('#showP').innerText = '';
+            this.classList.remove('alert', 'alert-success', 'test');
+         });
+    });
     
 
     let nav = s('nav');
@@ -40,5 +45,13 @@ loaded(function(){
     testezMoi.addEventListener('click', function(){
         console.log('On a cliquer sur le bouton');
     });
+
+    /* changer l'attribut src de l'image 
+    au mouseover par ../images/pip-boy-thumb-up.png 
+    au mouseout par ../images/pip-boy-thumb-down.png 
+    
+    */
+
+
 
 }); 
