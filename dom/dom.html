@@ -29,11 +29,33 @@
                 s('p#test').appendChild(testSpan);
                 
                 indexTestSpan++;
-                console.log(testSpan);
+                //console.log(testSpan);
             });
 
 
             /* en cliquant sur le bouton id resetIndex, remettre l'index à 1 */
+            s('#resetIndex').addEventListener('click', function(){
+                indexTestSpan = 1;
+            });
+
+            function addElementList(){
+                let inputValue = s('#item').value;
+
+                // vérifier si la valeur est !== '' sinon on ne l'ajoute pas
+
+                // create element li
+
+
+                // ajouter l'élément à la liste #toDoList
+
+
+            }
+
+            // click sur le bouton #addItemBtn
+
+            // déclencher la fonction addElementList
+
+            
         });
 
     </script>
@@ -48,6 +70,8 @@
             margin: 10px;
             border: 2px solid rgb(3, 100, 52);
             background-color: rgb(8, 175, 92);
+            padding: 5px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -115,7 +139,7 @@
                 </main>
             </article>
         </section>
-        <section>
+        <section class="row">
             <article class="col-lg-6">
                 <header>
                     <h2>To do list</h2>
