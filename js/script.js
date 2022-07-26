@@ -1,3 +1,17 @@
+/* fonction de raccourcis pour la fin de chargement de la page */
+function loaded(callable){
+    window.addEventListener('DOMContentLoaded', callable);
+}
+
+/* raccourci de querySelector */
+function s(selector){
+    return document.querySelector(selector);
+}
+
+function sAll(selector){
+    return document.querySelectorAll(selector);
+}
+
 /*
 création - modification et suppression d'un cookie
 */
