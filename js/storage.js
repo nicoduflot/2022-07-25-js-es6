@@ -23,4 +23,15 @@ window.addEventListener('DOMContentLoaded', function(){
         }
     });
 
+    btnClearSessionItem.addEventListener('click', function(){
+        sessionStorage.removeItem('sessionUserName');
+        dataSession.innerHTML = `<b>Pas d'élément sessionUserName dans la session</b>`;
+    });
+
+    btnClearSession.addEventListener('click', function(){
+        sessionStorage.clear();
+        dataSession.innerHTML = `<b>Pas d'élément sessionUserName dans la session</b>`;
+    });
+
+
 });
