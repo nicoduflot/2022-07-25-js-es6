@@ -8,7 +8,48 @@
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/dom.js"></script>
+    <script>
+        /**
+         * Créer dans le dom dom/dom.html
+         * 
+        */
+
+        loaded(function(){
+            let indexTestSpan = 1;
+            s('#addSpan').addEventListener('click', function(){
+                let testSpan = document.createElement('span');
+                testSpan.setAttribute('data-test', 'test');
+                let content = document.createTextNode(`Test n°${indexTestSpan}`);
+                testSpan.appendChild(content);
+                testSpan.classList.add('test');
+                testSpan.addEventListener('click', function(){
+                    this.remove();
+                });
+
+                s('p#test').appendChild(testSpan);
+                
+                indexTestSpan++;
+                console.log(testSpan);
+            });
+
+
+            /* en cliquant sur le bouton id resetIndex, remettre l'index à 1 */
+        });
+
+    </script>
+    <style>
+        p#test{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .test{
+            width: 200px;
+            height: 50px;
+            margin: 10px;
+            border: 2px solid rgb(3, 100, 52);
+            background-color: rgb(8, 175, 92);
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
@@ -57,13 +98,16 @@
                     <h2>Créer dans le DOM</h2>
                 </header>
                 <main>
-                    <p id="test">
-
-                    </p>
                     <p>
                         <button id="addSpan" class="btn btn-secondary">
                             Ajouter span testSpan
+                        </button> 
+                        <button id="resetIndex" class="btn btn-secondary">
+                            reset index span
                         </button>
+                    </p>
+                    <p id="test">
+                        
                     </p>
                     <button id="btn" class="btn btn-outline-primary">
                         Ajouter un paragraphe

@@ -66,6 +66,4 @@ loaded(function(){
         this.removeAttribute('style');
     });
 
-
-
 }); 
