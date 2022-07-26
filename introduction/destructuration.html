@@ -36,11 +36,76 @@
 
         let val01 = 12;
         let val02 = 55;
+        
+        console.log(`val01 : ${val01}, val02 : ${val02}`);
 
         /* exercice : inverser les valeurs dans les variable 
         val01 = 55;
         val02 = 12;
         */
+
+        /*
+        let tampon = val01;
+        val01 = val02;
+        val02 = tampon;
+        */
+
+        [val01, val02] = [val02, val01];
+
+        console.log(`val01 : ${val01}, val02 : ${val02}`);
+
+        let objet = {
+            lastName: 'Bond',
+            firstName: 'James',
+            job: 'Agent Secret',
+            helloBond: function(value = 'Monneypenny'){
+                return `Hello ${value}`;
+            }
+        };
+
+        console.log(objet);
+        console.log(objet.firstName);
+        console.log(objet.lastName);
+        console.log(objet.helloBond());
+        console.log(objet.helloBond('Bloefeld'));
+
+        let {lastName, firstName, helloBond} = objet;
+
+        console.log(lastName);
+        console.log(helloBond());
+
+        let {
+            lastName: nom, 
+            firstName: prenom, 
+            helloBond: salutation
+        } = objet;
+
+        console.log(nom);
+        console.log(salutation());
+
+        let perso1 = {
+            nom: 'Le canard',
+            prenom: 'Herbert',
+            coupSpecial: function(){
+                return 'Taïaut !';
+            }
+        }
+
+        let perso2 = {
+            nom: 'Le rouge',
+            prenom: 'Marvin',
+            coupSpecial: function(){
+                return 'Coup de boule';
+            }
+        }
+
+        console.log(perso1.coupSpecial(), perso2.coupSpecial());
+
+        [perso1.coupSpecial, perso2.coupSpecial] = [perso2.coupSpecial, perso1.coupSpecial];
+        
+        console.log(perso1.coupSpecial(), perso2.coupSpecial());
+
+
 
     </script>
 </head>
