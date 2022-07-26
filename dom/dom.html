@@ -21,7 +21,7 @@
                 testSpan.setAttribute('data-test', 'test');
                 let content = document.createTextNode(`Test n°${indexTestSpan}`);
                 testSpan.appendChild(content);
-                testSpan.classList.add('test');
+                testSpan.classList.add('test', 'alert', 'alert-success');
                 testSpan.addEventListener('click', function(){
                     this.remove();
                 });
@@ -38,22 +38,51 @@
                 indexTestSpan = 1;
             });
 
+            let inputValue = s('#item');
+
             function addElementList(){
-                let inputValue = s('#item').value;
-
                 // vérifier si la valeur est !== '' sinon on ne l'ajoute pas
+                if(inputValue.value !== ''){
+                    // create element li
 
-                // create element li
+                    console.log(s('#toDoList').children);
+                    console.log(Array.from(s('#toDoList').children));
 
+                    let tabLi = Array.from(s('#toDoList').children);
+                    if( tabLi.map((c)=>c.textContent.toLowerCase()).includes(inputValue.value.toLowerCase()) ){
+                        inputValue.value = '';
+                        inputValue.focus();
+                        return;
+                    }
 
-                // ajouter l'élément à la liste #toDoList
+                    let li = document.createElement('li');
+                    li.addEventListener('click', function(){
+                        this.remove();
+                    });
+                    li.classList.add('list-group-item', 'list-group-item-info');
+                    let content = document.createTextNode(inputValue.value);
+                    li.appendChild(content);
 
-
+                    // ajouter l'élément à la liste #toDoList
+                    s('#toDoList').appendChild(li);
+                    inputValue.value = '';
+                    inputValue.focus();
+                }
             }
 
             // click sur le bouton #addItemBtn
+            s('#addItemBtn').addEventListener('click', function(){
+                // déclencher la fonction addElementList
+                addElementList();
+            });
 
-            // déclencher la fonction addElementList
+            inputValue.addEventListener('keyup', function(event){
+                if('Enter' === event.key){
+                    addElementList();
+                }
+            });
+
+            
 
             
         });
@@ -67,11 +96,14 @@
         .test{
             width: 200px;
             height: 50px;
+            
             margin: 10px;
+            /*
             border: 2px solid rgb(3, 100, 52);
             background-color: rgb(8, 175, 92);
             padding: 5px;
             border-radius: 5px;
+            */
         }
     </style>
 </head>
@@ -166,7 +198,7 @@
                 </header>
                 <main>
                     <div id="list">
-                        <ul id="toDoList">
+                        <ul id="toDoList" class="list-group">
 
                         </ul>
                     </div>
