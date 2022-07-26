@@ -13,7 +13,8 @@ loaded(function(){
     allP.forEach(function(paragraph){
         console.log(paragraph);
         paragraph.addEventListener('mouseover', function(){
-           s('#showP').innerHTML = this.innerHTML;
+           s('#showP').innerText = this.innerHTML;
+           this.classList.add('alert', 'alert-success');
         });
     } );
     
@@ -34,5 +35,10 @@ loaded(function(){
     /*
     cliquer sur le bouton testez moi et afficher un message en console
     */
+
+    let testezMoi = s('button.testez-moi');
+    testezMoi.addEventListener('click', function(){
+        console.log('On a cliquer sur le bouton');
+    });
 
 }); 
