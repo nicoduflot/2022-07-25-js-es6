@@ -1,5 +1,3 @@
-
-
 /*
 création - modification et suppression d'un cookie
 */
