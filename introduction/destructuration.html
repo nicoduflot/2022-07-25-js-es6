@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Javascript Es6</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script language="javascript">
+        let liste = [1,2,3,4];
+        /* assigner chacune des valeur du tableau aux variables suivantes 
+        a, b, c
+        let a = liste[0];
+        let b = liste[1];
+        let c = liste[2];
+        */
+
+        let [a, b, c] = liste;
+        console.log(`a : ${a}, b : ${b}, c : ${c}`);
+
+        let [d, , f, g] = liste;
+        console.log(`d : ${d}, f : ${f}, g : ${g}`);
+
+        let [h, i, j, k = 0, l = 5] = liste;
+        console.log(`h : ${h}, i : ${i}, j : ${j}, k : ${k}, l : ${l}`);
+
+        function truc(unTruc = 12, uneOption = false, ...valeurs){
+            let [a = 0, b = false, c = 'Compta'] = valeurs;
+            console.log(unTruc, uneOption, a, b, c);
+            console.log(valeurs);
+        }
+
+        truc();
+        truc(12, true, 123.03, 'deebweeb', 101, 56, 85);
+
+        let val01 = 12;
+        let val02 = 55;
+
+        /* exercice : inverser les valeurs dans les variable 
+        val01 = 55;
+        val02 = 12;
+        */
+
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../">Accueil</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Introduction
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
+                            <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
+                            <li><a class="dropdown-item" href="../introduction/fonctions.html">Fonctions</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="row">
+            <article class="col">
+                <header>
+                    <h2>La destructuration</h2>
+                </header>
+                <main>
+                    <p>
+                        C'est un mode d'assignation de variables et d'objets
+                    </p>
+                    <p>
+                        Tous est dans la console & le code
+                    </p>
+                </main>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>

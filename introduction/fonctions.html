@@ -24,7 +24,10 @@
         console.log(coucouMachin('Nicolas'));
 
         // ... rest parameter ou spread parameter
-
+        /**
+         * @param {string} test
+         * @param {number} valeurs
+        */
         function addition(test, ...valeurs){
             let resultat = 0;
             console.log(valeurs);
@@ -36,7 +39,9 @@
             return resultat;
         }
 
-        console.log(addition(1,2,3,4,5.8,'6',7,'coucou',9));
+        addition()
+
+        console.log(addition('1',2,3,4,5.8,'6',7,'coucou',9));
 
         // fonction anonyme
 
@@ -140,7 +145,7 @@
                             <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
                             <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
                             <li><a class="dropdown-item" href="../introduction/fonctions.html">Fonctions</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a></li>
                         </ul>
                     </li>
                 </ul>
