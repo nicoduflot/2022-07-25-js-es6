@@ -52,6 +52,20 @@ loaded(function(){
     
     */
 
+    let imgOver = s('#imgOver');
+
+    imgOver.addEventListener('mouseover', function(){
+        this.setAttribute('src', '../images/pip-boy-thumb-up.png');
+        this.setAttribute('style', 'border:1px solid #0f0');
+        console.log(this.getAttribute('src')); // affiche la vlaeur actuelle de l'attribut src
+        console.log(this.hasAttribute('src')); // répond true si l'élément src est présent, false si non
+    });
+
+    imgOver.addEventListener('mouseout', function(){
+        this.setAttribute('src', '../images/pip-boy-thumb-down.png');
+        this.removeAttribute('style');
+    });
+
 
 
 }); 
