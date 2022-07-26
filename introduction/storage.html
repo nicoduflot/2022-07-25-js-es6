@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Javascript Es6</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script language="javascript">
+
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../">Accueil</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Introduction
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
+                            <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
+                            <li><a class="dropdown-item" href="../introduction/fonctions.html">Fonctions</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a></li>
+                            <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="row">
+            <article class="col-lg-6">
+                <header>
+                    <h2>Le stockage des données en JS</h2>
+                </header>
+                <main>
+                    <h3>sessionStorage</h3>
+                    <p>
+                        <label class="form-label">UserName :</label>
+                        <input type="text" class="form-control" id="sessionUser" value="" />
+                    </p>
+                    <p>
+                        <button id="btnSession" class="btn btn-outline-primary">
+                            Sauvegarder session user name
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearSessionItem" class="btn btn-outline-warning">
+                            Supprimer session user name
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearSession" class="btn btn-outline-danger">
+                            Vider la session
+                        </button>
+                    </p>
+                    <p>
+                        Session username actuel : <span id="dataSession"></span>
+                    </p>
+                </main>
+            </article>
+            <article class="col-lg-6">
+                <header>
+                    <h2>Le stockage des données en JS</h2>
+                </header>
+                <main>
+                    <h3>localStorage</h3>
+                    <p>
+                        <label class="form-label">UserName :</label>
+                        <input type="text" class="form-control" id="localUser" value="" />
+                    </p>
+                    <p>
+                        <button id="btnLocal" class="btn btn-outline-primary">
+                            Sauvegarder local user name
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearLocalItem" class="btn btn-outline-warning">
+                            Supprimer local user name
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearLocal" class="btn btn-outline-danger">
+                            Vider le local storage
+                        </button>
+                    </p>
+                    <p>
+                        Local username actuel : <span id="dataLocal"></span>
+                    </p>
+                </main>
+            </article>
+        </section>
+        <section class="row">
+            <article class="offset-lg-3 col-lg-6">
+                <header>
+                    <h2>Le stockage des données en JS</h2>
+                </header>
+                <main>
+                    <h3>Les cookies</h3>
+                    <p>
+                        <label class="form-label">Cookie Value :</label>
+                        <input type="text" class="form-control" id="cookieValue" value="" />
+                    </p>
+                    <p>
+                        <button id="btnCookie" class="btn btn-outline-primary">
+                            Sauvegarder cookie value
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnEmptyCookieValue" class="btn btn-outline-warning">
+                            Vider cookie value
+                        </button>
+                    </p>
+                    <p>
+                        <button id="btnClearCookieValue" class="btn btn-outline-danger">
+                            Supprimer cookie value
+                        </button>
+                    </p>
+                    <p>
+                        Cookie value actuel : <span id="dataCookieValue"></span>
+                    </p>
+                </main>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
