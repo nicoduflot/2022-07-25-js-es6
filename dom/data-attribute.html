@@ -50,7 +50,22 @@
                 }
             });
 
+            /*
+            pointeur ligne - colonne sur un tableau
+
+            1 récupérer la collection de td possédants data-column & data-line
+            2 abonner chaque élément de la collection à l'évènement mouseover et mouseout
+
+            3 au mouse over : 
+            3.1 repérer la ligne du td (le parent tr)
+                3.1.1 couleur de fond rgba(255, 0, 0, 0.5)
+            3.2 repérer les td de la même colonne
+                3.2.1 couleur de fond rgba(255, 0, 0, 0.5)
             
+            4 au mouseout :
+                4.1 retirer les couleur de bg
+            
+            */
 
         });
 
