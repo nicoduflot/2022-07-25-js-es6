@@ -10,7 +10,18 @@
     <script src="../js/script.js"></script>
     <script>
         loaded(function () {
+            let navDataset = s('nav button.navbar-toggler');
+            console.log(navDataset);
+            console.log(navDataset.dataset);
+            console.log(navDataset.dataset.bsToggle);
+
+            s('h2[data-title]').addEventListener('click', function(){
+                console.log(s('h2[data-title]').dataset.title);
+            });
+
             
+            
+
         });
 
     </script>
@@ -64,8 +75,8 @@
         <section class="row">
             <article class="col-lg-12">
                 <header>
-                    <h2 data-title="Les attributs data- (dataset)">
-                        Les attributs data- (dataset)
+                    <h2 data-title="Les attributs data">
+                        Les attributs data - (dataset)
                     </h2>
                 </header>
                 <main>
