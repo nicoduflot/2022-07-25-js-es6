@@ -8,14 +8,64 @@
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/dom.js"></script>
+    <script>
+        loaded(function () {
+            // pour utiliser l'AJAX, on ouvre sur le navigateur une connexion xhr => XmlHttpRequest : Requête Http pour de l'Xml
+            let xhr = getXhr();
+            let result = document.querySelector('#result');
+            sAll('button.btn[data-url]').forEach(btn => {
+                btn.addEventListener('click', function(){
+                    console.log(this);
+                    // méthode open utilisant un verb http ( GET, POST), url, asyn (true par défaut ou false), login, password
+                    /*
+                    xhr.open('GET', btn.dataset.url, false);
+                    xhr.send();
+                    result.innerHTML = xhr.responseText;
+                    console.log(xhr);
+                    */
+
+                    xhr.onreadystatechange = function(){
+                        /*
+                        0 : unsent              -> .open() n'a pas encore été appelé
+                        1 : openned             -> .open() a été appelé
+                        2 : headers_received    -> les entêtes de la requête ont été reçus
+                        3 : loading             -> la requête envoyé est en cours de traitement
+                        4 : done                -> le traitement de la requête est fini, la réponse est utilisable
+                        */
+
+                        if (200 !== xhr.status) {
+                            if (404 === xhr.status) {
+                                content = `<div class="alert alert-warning alert-dismissible fade show" >
+                                <b style="color:darkred;">${xhr.status} : ${xhr.statusText}</b><br />
+                                La ressource ${btn.dataset.url} n'existe pas ou le chemin vers cette ressource est erroné
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>`;
+                            } else {
+                                content = `<div class="alert alert-warning alert-dismissible fade show" >
+                                <b style="color:darkred;">${xhr.status} : ${xhr.statusText}</b>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>`;
+                            }
+                            result.innerHTML = content;
+                        }
+                        if (200 === xhr.status) {
+                            result.innerHTML = xhr.responseText;
+                        }
+                    }
+
+                    xhr.open('GET', btn.dataset.url);
+                    xhr.send();
+
+                });
+            });
+        });
+
+    </script>
     <style>
-        .test{
-            transition: all 1s ease;
-            transform: scale(1.2);
-        }
+        
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -36,7 +86,8 @@
                             <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
                             <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
                             <li><a class="dropdown-item" href="../introduction/fonctions.html">Fonctions</a></li>
-                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a>
+                            </li>
                             <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
                         </ul>
                     </li>
@@ -61,15 +112,6 @@
                             <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            AJAX
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -78,53 +120,25 @@
         <section class="row">
             <article class="col-lg-12">
                 <header>
-                    <h2 class="titreDeChapitre">Le DOM : Document Object Model</h2>
+                    <h2>
+                        AJAX - Asynchronous Javascript And Xml
+                    </h2>
                 </header>
                 <main>
+                    <h3>xhr : Xml Http Request</h3>
                     <p>
-                        le <b>DOM</b> nous permet de repérer, analyser, modifier et 
-                        supprimer des éléments de la page HTML
-                    </p>
-                    <p>
-                        Il faut que tous les éléments soient chargés pour qu'il soit 
-                        possible d'agir sur eux avec JS.
-                        On écoute l'évènement de la fenêtre DOMContentLoaded qui survient
-                        quand la page est totalement chargée.
-                    </p>
-                    <p>
-                        <button class="btn btn-outline-primary btn-sm testez-moi">Testez-moi</button>
-                    </p>
-                    <h3 class="titreDeChapitre">Agir sur le DOM</h3>
-                    <ul>
-                        <li>Connaître l'élément surveillé l'élément du DOM, de la page</li>
-                        <li>Connaître l'événement écouté : le déclencheur</li>
-                    </ul>
-                    <p>
-                        <button class="btn btn-secondary" id="checkP">
-                            Tester les paragraphes
+                        <button class="btn btn-secondary btn-sm read" data-url="../resource/file.txt">
+                            Lire le fichier txt
+                        </button>
+                        <button class="btn btn-secondary btn-sm read" data-url="../dada/resource/file.txt">
+                            Connexion à un mauvais fichier
                         </button>
                     </p>
-                    <div id="showP">
-                        
+                    <div id="result">
+
                     </div>
-                    <p id="special">
-                        Lorem ipsum dolor sit amet 
-                        consectetur adipisicing elit. 
-                        Nihil hic numquam magnam ullam, 
-                        ea odio illo doloremque molestias 
-                        accusamus corporis corrupti doloribus 
-                        ab! Mollitia provident quibusdam libero, 
-                        fugit a perferendis.
-                    </p>
-                    <figure>
-                        <img src="../images/pip-boy-thumb-down.png" alt="Pip boy sans le bras droit" width="200" id="imgOver" />
-                        <figcaption>
-                            Pip boy sans le bras droit
-                        </figcaption>
-                    </figure>
                 </main>
             </article>
-
         </section>
     </main>
 </body>

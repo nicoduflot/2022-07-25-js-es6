@@ -34,3 +34,27 @@ function getCookie(name){
     }
     return false;
 }
+
+function getXhr(){
+    let xhr = null;
+    // vérifier si le navigateur support un des protocoles AJAX existant
+    if( window.ActiveXObject || window.XMLHttpRequest ){
+        // est-ce un des deux protocole microsoft ou celui des autres navigateur
+        if(window.ActiveXObject){
+            // si M$
+            // deux protocoles
+            try{
+                xhr = new ActiveXObject('Msxml2.XMLHTTP');
+            }catch(e){
+                xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+        }else{
+            xhr = new XMLHttpRequest();
+        }
+    }else{
+        console.log('votre navigateur ne supporte pas le protocole AJAX');
+        xhr = false;
+    }
+
+    return xhr;
+}
