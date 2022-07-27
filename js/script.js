@@ -64,7 +64,7 @@ function jsonUsersToHTMLTable(data){
     if(null !== data){
         data.forEach(user => {
             html += `
-<tr>
+<tr data-id="${user.id}" data-username="${user.name}" data-email="${user.email}">
     <td>${user.id}</td>
     <td>${user.name}</td>
     <td>${user.email}</td>
