@@ -58,3 +58,19 @@ function getXhr(){
 
     return xhr;
 }
+
+function jsonUsersToHTMLTable(data){
+    let html = '';
+    if(null !== data){
+        data.forEach(user => {
+            html += `
+<tr>
+    <td>${user.id}</td>
+    <td>${user.name}</td>
+    <td>${user.email}</td>
+</tr>
+            `;
+        });
+    }
+    return html;
+}
