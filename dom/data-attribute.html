@@ -19,7 +19,37 @@
                 console.log(s('h2[data-title]').dataset.title);
             });
 
+            let pDModule = sAll('p[data-module]');
+            console.log(pDModule);
             
+            pDModule.forEach(element => {
+                switch(element.dataset.module){
+                    case 'color':
+                        // code a appliquer
+                        let color = element.dataset.color || '#f00';
+                        element.addEventListener('mouseover', function(){
+                            this.style.setProperty('color', color);
+                        });
+                        element.addEventListener('mouseout', function(){
+                            this.style.removeProperty('color');
+                        });
+                    break; // sortir du switch
+                    case 'font':
+                    case 'magie':
+                        let weight = element.dataset.weight || 'lighter';
+                        element.addEventListener('mouseover', function(){
+                            this.style.setProperty('font-weight', weight);
+                        });
+                        element.addEventListener('mouseout', function(){
+                            this.style.removeProperty('font-weight');
+                        });
+                    break;
+                    case 'after':
+                    default:
+                        // cas par défaut ou module = after
+                }
+            });
+
             
 
         });
