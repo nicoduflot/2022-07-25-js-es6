@@ -86,30 +86,44 @@
             s('form#testPreventDefault').addEventListener('submit', function (event) {
                 event.preventDefault();
                 let nom = s('[name="nom"]').value;
-                console.log(nom);
                 let prenom = s('[name="prenom"]').value;
-                console.log(prenom);
                 if ('' !== nom && '' !== prenom) {
                     s('form#testPreventDefault').submit();
                 } else {
-                    let test = document.createElement('div');
-                    test.setAttribute('style', 'height: 100px');
-                    test.classList.add('alert', 'alert-warning');
-                    s('form#testPreventDefault').parentNode.append(test);
                     /*
                     créer l'élément d'alerte a ajouter en dessous du formulaire
-
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    
                     */
+                    let div = document.createElement('div');
+                    div.classList.add('alert',  'alert-warning', 'alert-dismissible', 'fade', 'show');
+                    div.setAttribute('role', 'alert');
+                    let strong = document.createElement('strong');
+                    let strongContent = document.createTextNode('ATTENTION');
+                    strong.appendChild(strongContent);
+                    div.appendChild(strong);
+                    div.appendChild(document.createElement('br'));
+                    let textAlert = '';
+                    if('' === nom){
+                        //textAlert = textAlert + 'Le champs Nom est vide\n';
+                        textAlert += 'Le champ Nom est vide\n';
+                    }
+                    if('' === prenom){
+                        textAlert += 'Le champ prénom est vide';
+                    }
+                    let alertTextContent = document.createTextNode(textAlert);
+                    div.appendChild(alertTextContent);
+                    let button = document.createElement('button');
+                    button.setAttribute('type', 'button');
+                    button.setAttribute('data-bs-dismiss', 'alert');
+                    button.setAttribute('aria-label', 'Close');
+                    button.classList.add('btn-close');
+                    div.appendChild(button);
+                    s('form#testPreventDefault').parentNode.append(div);
                 }
-
-
             });
-
         });
 
     </script>
