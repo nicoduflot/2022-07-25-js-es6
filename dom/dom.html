@@ -14,56 +14,49 @@
          * 
         */
 
-        loaded(function(){
+        loaded(function () {
             let indexTestSpan = 1;
-            s('#addSpan').addEventListener('click', function(){
+            s('#addSpan').addEventListener('click', function () {
                 let testSpan = document.createElement('span');
                 testSpan.setAttribute('data-test', 'test');
                 let content = document.createTextNode(`Test n°${indexTestSpan}`);
                 testSpan.appendChild(content);
                 testSpan.classList.add('test', 'alert', 'alert-success');
-                testSpan.addEventListener('click', function(){
+                testSpan.addEventListener('click', function () {
                     this.remove();
                 });
 
                 s('p#test').appendChild(testSpan);
-                
+
                 indexTestSpan++;
                 //console.log(testSpan);
             });
 
 
             /* en cliquant sur le bouton id resetIndex, remettre l'index à 1 */
-            s('#resetIndex').addEventListener('click', function(){
+            s('#resetIndex').addEventListener('click', function () {
                 indexTestSpan = 1;
             });
 
             let inputValue = s('#item');
 
-            function addElementList(){
-                // vérifier si la valeur est !== '' sinon on ne l'ajoute pas
-                if(inputValue.value !== ''){
-                    // create element li
-
-                    console.log(s('#toDoList').children);
-                    console.log(Array.from(s('#toDoList').children));
-
+            function addElementList() {
+                if (inputValue.value !== '') {
                     let tabLi = Array.from(s('#toDoList').children);
-                    if( tabLi.map((c)=>c.textContent.toLowerCase()).includes(inputValue.value.toLowerCase()) ){
+                    if (tabLi.map((c) => c.textContent.toLowerCase()).includes(inputValue.value.toLowerCase())) {
                         inputValue.value = '';
                         inputValue.focus();
                         return;
                     }
 
                     let li = document.createElement('li');
-                    li.addEventListener('click', function(){
+                    li.addEventListener('click', function () {
                         this.remove();
                     });
                     li.classList.add('list-group-item', 'list-group-item-info');
                     let content = document.createTextNode(inputValue.value);
                     li.appendChild(content);
 
-                    // ajouter l'élément à la liste #toDoList
                     s('#toDoList').appendChild(li);
                     inputValue.value = '';
                     inputValue.focus();
@@ -71,32 +64,65 @@
             }
 
             // click sur le bouton #addItemBtn
+            /*
             s('#addItemBtn').addEventListener('click', function(){
                 // déclencher la fonction addElementList
                 addElementList();
             });
+            */
 
-            inputValue.addEventListener('keyup', function(event){
-                if('Enter' === event.key){
+            s('#addItemBtn').addEventListener('click', () => addElementList());
+
+            inputValue.addEventListener('keyup', (event) => {
+                if ('Enter' === event.key) {
                     addElementList();
                 }
             });
 
-            
+            //testPreventDefault
 
-            
+            let buttonForm = s('form#testPreventDefault button[type="submit"].btn.btn-success');
+            console.log(buttonForm);
+            s('form#testPreventDefault').addEventListener('submit', function (event) {
+                event.preventDefault();
+                let nom = s('[name="nom"]').value;
+                console.log(nom);
+                let prenom = s('[name="prenom"]').value;
+                console.log(prenom);
+                if ('' !== nom && '' !== prenom) {
+                    s('form#testPreventDefault').submit();
+                } else {
+                    let test = document.createElement('div');
+                    test.setAttribute('style', 'height: 100px');
+                    test.classList.add('alert', 'alert-warning');
+                    s('form#testPreventDefault').parentNode.append(test);*
+                    /*
+                    créer l'élément d'alerte a ajouter en dessous du formulaire
+
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    
+                    */
+                }
+
+
+            });
+
         });
 
     </script>
     <style>
-        p#test{
+        p#test {
             display: flex;
             flex-wrap: wrap;
         }
-        .test{
+
+        .test {
             width: 200px;
             height: 50px;
-            
+
             margin: 10px;
             /*
             border: 2px solid rgb(3, 100, 52);
@@ -107,6 +133,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -127,7 +154,8 @@
                             <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
                             <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
                             <li><a class="dropdown-item" href="../introduction/fonctions.html">Fonctions</a></li>
-                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a>
+                            </li>
                             <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
                         </ul>
                     </li>
@@ -157,13 +185,13 @@
                     <p>
                         <button id="addSpan" class="btn btn-secondary">
                             Ajouter span testSpan
-                        </button> 
+                        </button>
                         <button id="resetIndex" class="btn btn-secondary">
                             reset index span
                         </button>
                     </p>
                     <p id="test">
-                        
+
                     </p>
                     <button id="btn" class="btn btn-outline-primary">
                         Ajouter un paragraphe
