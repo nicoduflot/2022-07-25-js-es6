@@ -57,10 +57,20 @@
             si on clique sur le bouton centre, le carre revient au centre 
             si on clique sur le bouton droite, le carre va à droite 
 
-            utiliser element.className = ('gauche')
-            utiliser element.className = ('droite')
+            utiliser element.className = 'gauche'
+            utiliser element.className = 'droite'
             */
 
+            let gauche = s('#gauche');
+            let centre = s('#centre');
+            let droite = s('#droite');
+            let carre = s('#carre');
+
+            gauche.addEventListener('click', function(){
+                carre.className = 'gauche'
+            });
+            droite.addEventListener('click', ()=> carre.className = 'droite');
+            centre.addEventListener('click', ()=> carre.removeAttribute('class'));
 
         });
 
