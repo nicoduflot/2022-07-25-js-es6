@@ -67,6 +67,28 @@
             
             */
 
+            let tdPointeur = sAll('td[data-column][data-line]');
+            console.log(tdPointeur);
+            tdPointeur.forEach(element => {
+                //console.log(element.parentNode);
+                let colonne = element.dataset.column;
+                element.addEventListener('mouseover', function(){
+                    element.parentNode.style.backgroundColor = ('rgba(255, 0, 0, 0.5)');
+                    sAll(`td[data-column="${colonne}"]`).forEach(td=>{
+                        td.style.backgroundColor = ('rgba(255, 0, 0, 0.5)');
+                    });
+                });
+
+                element.addEventListener('mouseout', function(){
+                    element.parentNode.style.removeProperty('background-color');
+                    sAll(`td[data-column="${colonne}"]`).forEach(td=>{
+                        td.style.removeProperty('background-color');
+                    });
+                });
+            });
+
+            
+
         });
 
     </script>
@@ -235,7 +257,7 @@
                             <td data-column="4" data-line="4">4 - 4</td>
                         </tr>
                     </table>
-                    <h3>Grille de puissance </h3>
+                    <h3>Grille de puissance 4</h3>
                     <table id="p4" class="table">
                         <thead>
                             <tr>
