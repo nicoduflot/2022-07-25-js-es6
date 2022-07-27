@@ -11,10 +11,51 @@
     <script>
         
         loaded(function () {
+            // ajouter de la couleur via un attribut de l'élément
+            s('#btn').addEventListener('click', function(){
+                let cible = s('#cible');
+                if(!cible.hasAttribute('style')){
+                    cible.style.borderWidth = '2px';
+                    cible.style.borderColor = 'black';
+                    cible.style.borderStyle = 'solid';
+                }else{
+                    console.log('test');
+                    /*
+                    cible.style.removeProperty('border-color');
+                    cible.style.removeProperty('border-style');
+                    */
+                    cible.removeAttribute('style');
+                }
+            });
 
+            s('#btnClasse').addEventListener('click', function(){
+                let cible = s('#cibleClasse');
+                /*
+                if(!cible.classList.contains('rouge-gras')){
+                    console.log('pas la classe');
+                    cible.classList.add('rouge-gras');
+                }else{
+                    cible.classList.remove('rouge-gras');
+                }
+                */
+
+                cible.classList.toggle('rouge-gras');
+
+                /* 
+                mini exo  
+                ajouter un bouton qui ajoute un backgroun-color à l'élément
+                sans modifier la classe rouge-gras
+                */
+            });
         });
 
     </script>
+    <style>
+        .rouge-gras{
+            color: darkred;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
