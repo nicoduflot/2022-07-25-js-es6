@@ -9,16 +9,16 @@
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="../js/script.js"></script>
     <script>
-        
+
         loaded(function () {
             // ajouter de la couleur via un attribut de l'élément
-            s('#btn').addEventListener('click', function(){
+            s('#btn').addEventListener('click', function () {
                 let cible = s('#cible');
-                if(!cible.hasAttribute('style')){
+                if (!cible.hasAttribute('style')) {
                     cible.style.borderWidth = '2px';
                     cible.style.borderColor = 'black';
                     cible.style.borderStyle = 'solid';
-                }else{
+                } else {
                     console.log('test');
                     /*
                     cible.style.removeProperty('border-color');
@@ -28,7 +28,7 @@
                 }
             });
 
-            s('#btnClasse').addEventListener('click', function(){
+            s('#btnClasse').addEventListener('click', function () {
                 let cible = s('#cibleClasse');
                 /*
                 if(!cible.classList.contains('rouge-gras')){
@@ -38,23 +38,55 @@
                     cible.classList.remove('rouge-gras');
                 }
                 */
-
                 cible.classList.toggle('rouge-gras');
-
                 /* 
                 mini exo  
                 ajouter un bouton qui ajoute un backgroun-color à l'élément
                 sans modifier la classe rouge-gras
                 */
             });
+
+            s('#btnClasseBg').addEventListener('click', function(){
+                let cible = s('#cibleClasse');
+                cible.classList.toggle('bg-secondary');
+            });
+
+            /* 
+            mini exercice
+            si on clique sur le bouton gauche, le carre va à gauche 
+            si on clique sur le bouton centre, le carre revient au centre 
+            si on clique sur le bouton droite, le carre va à droite 
+
+            utiliser element.className = ('gauche')
+            utiliser element.className = ('droite')
+            */
+
+
         });
 
     </script>
     <style>
-        .rouge-gras{
+        .rouge-gras {
             color: darkred;
             font-weight: bold;
         }
+
+        #carre{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            margin: 20px auto;
+            transition: transform 1s;
+        }
+
+        .gauche{
+            transform: translateX( calc( -1 * (100vw/2 - 100px) ) );
+        }
+
+        .droite{
+            transform: translateX( calc( 100vw/2 - 100px)  );
+        }
+
     </style>
 </head>
 
@@ -110,22 +142,28 @@
                         Ajouter de la couleur
                     </button>
                     <p id="cible">
-                        Lorem ipsum dolor sit, amet consectetur 
-                        adipisicing elit. Numquam explicabo 
-                        deleniti beatae dolores quisquam esse, 
-                        dolorum atque architecto repellat quo ad 
-                        earum laudantium tenetur quidem aliquid 
+                        Lorem ipsum dolor sit, amet consectetur
+                        adipisicing elit. Numquam explicabo
+                        deleniti beatae dolores quisquam esse,
+                        dolorum atque architecto repellat quo ad
+                        earum laudantium tenetur quidem aliquid
                         rem quos voluptatibus a?
                     </p>
-                    <button id="btnClasse" class="btn btn-secondary">
-                        Ajouter de la couleur en classe
-                    </button>
+                    <div class="btn-group" role="group">
+                        <button id="btnClasse" class="btn btn-secondary active">
+                            Ajouter de la couleur en classe
+                        </button>
+                        <button id="btnClasseBg" class="btn btn-secondary">
+                            Ajouter un background
+                        </button>
+                    </div>
+
                     <p id="cibleClasse" class="times">
-                        Lorem ipsum dolor sit, amet consectetur 
-                        adipisicing elit. Numquam explicabo 
-                        deleniti beatae dolores quisquam esse, 
-                        dolorum atque architecto repellat quo ad 
-                        earum laudantium tenetur quidem aliquid 
+                        Lorem ipsum dolor sit, amet consectetur
+                        adipisicing elit. Numquam explicabo
+                        deleniti beatae dolores quisquam esse,
+                        dolorum atque architecto repellat quo ad
+                        earum laudantium tenetur quidem aliquid
                         rem quos voluptatibus a?
                     </p>
                     <p class="btn-group" role="group">
