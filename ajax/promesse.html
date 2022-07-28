@@ -10,7 +10,57 @@
     <script src="../js/script.js"></script>
     <script>
         loaded(function () {
-            
+             /*
+            Promise = créer une fonction asynchrone dont l'éxécution de stoppe pas 
+            ou ne "fige" pas l'utilisation de la page.
+
+            Une promesse renvoie deux types de résultat :
+            Soit la réussite avec la fonction   resolve()
+            Soit l'échec avec la fonction       reject()
+            */
+
+            function traitementLong(){
+                let randError = Math.floor(Math.random()*3 + 1);
+
+                let data = 'Le formateur aime les jeux de rôle (c\'est pas un titre)';
+
+                return new Promise( function(resolve, reject){
+                    setTimeout(function(){
+                        if(2 != randError){
+                            resolve(data);
+                        }else{
+                            reject( new Error('L\'information n\'est pas disponible') );
+                        }
+                    }, 3000);
+                });
+            }
+
+            async function asyncCall(){
+                let result = await traitementLong();
+                return result;
+            }
+
+
+            let finAsync = '';
+            let result = s('#result');
+            s('#btn').addEventListener('click', function(){
+                asyncCall()
+                .then(function(flux){
+                    console.log(`async : ${flux}`);
+                    finAsync += flux;
+                })
+                .catch(function(error){
+                    console.log(`async : ${error}`);
+                    finAsync += error;
+                })
+                .finally(function(){
+                    console.log('Fin du traitement');
+                    finAsync += `<br />Fin async<br />`;
+                    result.innerHTML = finAsync;
+                    finAsync = '';
+                });
+            });
+
         });
 
     </script>
@@ -87,6 +137,12 @@
                     </p>
                     <p id="result">
                         
+                    </p>
+                    <p>
+                        <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+                            target="_blank">
+                            Documentation complémentaire sur la promesse
+                        </a>
                     </p>
                 </main>
             </article>
