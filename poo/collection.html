@@ -199,6 +199,58 @@
             
             */
 
+            class Mob{
+                constructor(nom, pv){
+                    this.nom = nom;
+                    this.pv = pv;
+                    this.classe = 'soldat';
+                    this.endurance = 0;
+                }
+
+                multi(){
+                    let resMulti = `Multi : ${this.attaque()} | ${this.attaque()}`;
+                    return resMulti;
+                }
+
+                attaque(){
+                    return `${this.nom} attaque dégâts = 10`;
+                }
+            }
+
+            class Boss extends Mob{
+                constructor(nom, pv){
+                    super(nom, pv);
+                    this.classe = 'Chef';
+                    this.endurance = 5;
+                    this.pv = this.pv*2;
+                }
+
+                multi(){
+                    let resMulti = `Multi : ${this.attaque()} x 3`;
+                    return resMulti;
+                }
+            }
+
+            let mob = new Mob('Peter', 10);
+            console.log(mob);
+            console.log(mob.attaque());
+            console.log(mob.multi());
+
+            let boss = new Boss('Hulk', 20);
+            console.log(boss);
+            console.log(boss.attaque());
+            console.log(boss.multi());
+/*
+            setCookie('personnage', JSON.stringify(boss), 1);
+            console.log(getCookie('personnage'));
+            let cookiePerso = getCookie('personnage');
+            console.log(cookiePerso);
+            cookiePerso = JSON.parse(cookiePerso);
+            console.log(cookiePerso);
+            console.log(typeof cookiePerso);
+            cookiePerso.attaque();
+            */
+
         });
     </script>
     <style>
@@ -263,7 +315,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../poo/index.html">POO</a></li>
                             <li><a class="dropdown-item" href="../poo/collection.html">Collections</a></li>
-                            <li><a class="dropdown-item" href="../poo/iterator.html">Iterator</a></li>
+                            <!--<li><a class="dropdown-item" href="../poo/iterator.html">Iterator</a></li>-->
                             <li><a class="dropdown-item" href="../poo/module.html">Module</a></li>
                             <li><a class="dropdown-item" href="../poo/classe.html">Class</a></li>
                         </ul>
