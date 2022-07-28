@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Javascript Es6</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script src="../js/script.js"></script>
+    <script>
+        loaded(function () {
+            // Collections : dictionnaires (ou tableaux associatifs) 
+            // les index sont en fait des clefs
+            // Elles sont créées (entre autre) par la class Map()
+
+            let map = new Map();
+            
+            map.set('lastName', 'Doe');
+            map.set('firsteNale', 'Jane')
+                .set('email', 'jane.doe@missing.com')
+                .set('phone', '0123456789')
+                .set('phone', '9876543210')
+                .set('detail', 'none')
+                .set('', 'truc');
+            console.log(map);
+            console.log(map.size);
+            console.log(map.get('lastName'));
+
+            map.forEach((value, key, map)=>{
+                console.log(`${key} => ${value}`);
+            });
+
+            map.delete('detail');
+            console.log(map);
+
+            if(map.has('email')){
+                console.log(`l'email est ${map.get('email')}`);
+            }else{
+                console.log(`l'email n'est pas dans l'objet map`);
+            }
+
+            //map.clear();
+            map.delete('');
+            console.log(map);
+
+            //  .entries()  => un for of des clefs et des valeurs de la collection
+            //  .keys()     => un for of des clefs de la collection
+            //  .values()   => un for of des valeurs de la collection
+
+            // Map() implémente déjà un "design pattern" nomé Iterator
+            // Un itérator permet de parcourir les données de l'objet comme 
+            // s'il s'agissait d'un tableau
+            // Iterator => Itérable => structure d'itération (for / while .forEach() / etc)
+
+            console.log(`| ${'KEY'.toUpperCase().padEnd(12, ' ')} | ${'Value'.toUpperCase().padStart(24, ' ')} |`);
+            console.log(`| ${''.padStart(39, '_')} |`);
+            for(let [key, value] of map.entries()){
+                console.log(`| ${key.toUpperCase().padEnd(12, ' ')} | ${value.toUpperCase().padStart(24, ' ')} |`);
+            }
+            console.log(`| ${''.padStart(39, '_')} |`);
+            for(let key of map.keys()){
+                console.log(`| ${key.toUpperCase().padEnd(12, ' ')} | ${'****'.padStart(24, ' ')} |`);
+            }
+            console.log(`| ${''.padStart(39, '_')} |`);
+            for(let value of map.values()){
+                console.log(`| ${'***'.padEnd(12, ' ')} | ${value.toUpperCase().padStart(24, ' ')} |`);
+            }
+
+            // collection type tableau à valeur unique => pas d'indice ni de clef
+            // class Set()
+
+            let set = new Set();
+            console.log(set);
+            set.add('Jon').add('Aria').add('Sansa').add('Rob').add('Joffrey').add('Sansa').add('Hodor')
+            .add('Brandon').add('Oona');
+            console.log(set);
+
+            console.log(` ${'Key'.toUpperCase().padEnd(8, ' ')} | ${'Value'.padStart(8, ' ')} `);
+            console.log(''.padEnd(20, '_'));
+            for( let [key, value] of set.entries()){
+                console.log(` ${key.toUpperCase().padEnd(8, ' ')} | ${value.padStart(8, ' ')} `);
+            }
+            console.log(''.padEnd(20, '_'));
+            for( let key of set.keys()){
+                console.log(` ${key.toUpperCase().padEnd(8, ' ')} | ${'****'.padStart(8, ' ')} `);
+            }
+            console.log(''.padEnd(20, '_'));
+            for( let value of set.values()){
+                console.log(` ${'***'.padEnd(8, ' ')} | ${value.padStart(8, ' ')} `);
+            }
+
+            set.delete('Joffrey');
+            console.log(set);
+
+            if(!set.has('Joffrey')){
+                console.log('YOUPI !');
+            }
+
+            /* pour les warrior de l'objet : la factory */ 
+            // Factory : Usine de création d'objet 
+            // sans passer par une classe "normale" 
+            // qui possède un constructeur
+
+            class Employee{
+                constructor(name){
+                    this.name = name;
+                    this.role = 'Employee';
+                }
+            }
+
+            class Manager extends Employee{
+                constructor(name){
+                    super(name);
+                    this.role = 'Manager';
+                }
+            }
+
+            class HumanResources extends Employee{
+                constructor(name){
+                    super(name);
+                    this.role = 'HR';
+                }
+            }
+
+            // on va invoquer la factory de création d'employé, 
+            // on défini à l'invocation le role voulu
+            // la factory elle va créé l'employé en choisissant la 
+            // bonne classe selon le role
+
+            class UserFactory{
+                // pas de constructeur, la factory se basera sur le constructeur de 
+                // la classe qui correspondra au role choisi de l'employé
+
+                // la factory créera l'employé à l'aide d'une méthode statique : 
+                // on ne crée pas d'instance d'une factory, on appel la méthode de création
+                // d'employé et c'est elle qui créera l'instance
+                static createUser(firstName, lastName, email, phone, city, country, role){
+                    let info = {
+                        firstName: firstName,
+                        lastName: lastName, 
+                        email: email, 
+                        phone: phone, 
+                        role: role
+                    };
+                    let address = {
+                        city: city, 
+                        country: country
+                    };
+                    let user = {
+                        login: email
+                    };
+                    let response = null;
+                    switch(role){
+                        case 'Manager':
+                            response = new Manager(lastName);
+                            break;
+                        case 'HR':
+                            response = new HumanResources(lastName);
+                            break;
+                        default:
+                            response = new Employee(lastName);
+                    }
+
+                    //response contient maintenant une instance de classe Employee ou une de ses classes filles
+                    //es6
+                    Object.assign(user, info, address, response);
+
+                    return user;
+                }
+
+                static testPair(unNombre){
+                    if(parseFloat(unNombre)){
+                        let reste = parseFloat(unNombre) % 2;
+                        return (0 !== reste)? 'impair' : 'pair';
+                    }else{
+                        return false;
+                    }
+                }
+            }
+
+            let nDuflot = UserFactory.createUser('Nicolas', 'Duflot', 'nduflot@dawan.fr', '0123456789', 'Lille', 'France', 'Manager');
+            let aStarck = UserFactory.createUser('Aria', 'Starck', 'aStarck@killemall.ws', '9876543210', 'Le Nord', 'Westeros', 'HR');
+            let hHodor = UserFactory.createUser('Hodor', 'Hodor', 'hHodor@holdthedoor.ws', '1122334455', 'Le Nord', 'Westeros');
+
+            console.log(nDuflot);
+            console.log(aStarck);
+            console.log(hHodor);
+
+            console.log(UserFactory.testPair(13));
+
+        });
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../">Accueil</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Introduction
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
+                            <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
+                            <li><a class="dropdown-item" href="../introduction/fonctions.html">Fonctions</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a>
+                            </li>
+                            <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Interactions DOM
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../dom/index.html">Le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/dom.html">Créer dans le DOM</a></li>
+                            <li><a class="dropdown-item" href="../dom/css.html">DOM et CSS</a></li>
+                            <li><a class="dropdown-item" href="../dom/data-attribute.html">Dataset</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            AJAX
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
+                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX & Fetch</a></li>
+                            <li><a class="dropdown-item" href="../ajax/promesse.html">Fonctions asynchrone & Promesse</a></li>
+                            <li><a class="dropdown-item" href="../ajax/fetch.html">Fetch & JSON</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            POO
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="../poo/index.html">POO</a></li>
+                            <li><a class="dropdown-item" href="../poo/collection.html">Collections</a></li>
+                            <li><a class="dropdown-item" href="../poo/iterator.html">Iterator</a></li>
+                            <li><a class="dropdown-item" href="../poo/module.html">Module</a></li>
+                            <li><a class="dropdown-item" href="../poo/classe.html">Class</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="row">
+            <article class="col-lg-12">
+                <header>
+                    <h2>
+                        POO : Les collections
+                    </h2>
+                </header>
+                <main>
+                    <p>
+                        Les collections sont des structures - objets - proches des tableaux 
+                        mais qu'on manipule comme des objets
+                    </p>
+                    <p>
+                        Tout se passe dans le code
+                    </p>
+                </main>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
