@@ -23,6 +23,25 @@
                     });
                 });
             });
+
+            let searchUser = s('#searchUser');
+            searchUser.addEventListener('keyup', function(){
+                let inputValue = searchUser.value;
+                if(inputValue.length >= 3){
+                    fetch('../resource/users.json')
+                    .then( reponse=> reponse.json() )
+                    .then( data => {
+                        let tabResult = jsonToTableObjectSearch(data, inputValue);
+                        thead.innerHTML = tabResult[0];
+                        tbody.innerHTML = tabResult[1];
+                    });
+                }else{
+                    thead.innerHTML = '';
+                    tbody.innerHTML = '';
+
+                }
+            });
+
         });
 
     </script>
@@ -86,6 +105,17 @@
     </nav>
     <main class="container">
         <section class="row">
+            <article class="col-lg-6">
+                <header>
+                    <h2>Suggestion utilisateurs</h2>
+                </header>
+                <main>
+                    <h3>Utilisateur dans users</h3>
+                    <p>
+                        <input type="text" id="searchUser" value="" class="form-control" />
+                    </p>
+                </main>
+            </article>
             <article class="col-12">
                 <header>
                     <h2>
@@ -115,17 +145,7 @@
                     </table>
                 </main>
             </article>
-            <article class="col-lg-6">
-                <header>
-                    <h2>Suggestion utilisateurs</h2>
-                </header>
-                <main>
-                    <h3>Utilisateur dans users</h3>
-                    <p>
-                        <input type="text" id="searchUser" value="" class="form-control" />
-                    </p>
-                </main>
-            </article>
+            
         </section>
     </main>
 </body>
