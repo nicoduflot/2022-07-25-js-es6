@@ -98,7 +98,7 @@
                     </div>
                     */
                     let div = document.createElement('div');
-                    div.classList.add('alert',  'alert-warning', 'alert-dismissible', 'fade', 'show');
+                    div.classList.add('alert', 'alert-warning', 'alert-dismissible', 'fade', 'show');
                     div.setAttribute('role', 'alert');
                     let strong = document.createElement('strong');
                     let strongContent = document.createTextNode('ATTENTION');
@@ -106,11 +106,11 @@
                     div.appendChild(strong);
                     div.appendChild(document.createElement('br'));
                     let textAlert = '';
-                    if('' === nom){
+                    if ('' === nom) {
                         //textAlert = textAlert + 'Le champs Nom est vide\n';
                         textAlert += 'Le champ Nom est vide\n';
                     }
-                    if('' === prenom){
+                    if ('' === prenom) {
                         textAlert += 'Le champ prénom est vide';
                     }
                     let alertTextContent = document.createTextNode(textAlert);
@@ -192,7 +192,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
-                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX</a></li>
+                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX & Fetch</a></li>
+                            <li><a class="dropdown-item" href="../ajax/promesse.html">Fonctions asynchrone & Promesse</a></li>
                         </ul>
                     </li>
                 </ul>

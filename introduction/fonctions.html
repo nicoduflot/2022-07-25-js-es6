@@ -11,13 +11,13 @@
         let intNumber = parseInt('12'); // une fonction
         let deuxPowtrois = Math.pow(2, 3); // la méthode de la classe Math
 
-        function coucou(){
+        function coucou() {
             return 'coucou';
         }
 
         console.log(coucou());
 
-        function coucouMachin(machin){
+        function coucouMachin(machin) {
             return `coucou ${machin}`;
         }
 
@@ -28,11 +28,11 @@
          * @param {string} test
          * @param {number} valeurs
         */
-        function addition(test, ...valeurs){
+        function addition(test, ...valeurs) {
             let resultat = 0;
             console.log(valeurs);
-            for(let valeur of valeurs){
-                if(!isNaN(valeur)){
+            for (let valeur of valeurs) {
+                if (!isNaN(valeur)) {
                     resultat = resultat + parseFloat(valeur);
                 }
             }
@@ -41,11 +41,11 @@
 
         addition()
 
-        console.log(addition('1',2,3,4,5.8,'6',7,'coucou',9));
+        console.log(addition('1', 2, 3, 4, 5.8, '6', 7, 'coucou', 9));
 
         // fonction anonyme
 
-        let maFonctionAnonyme = function(name = ''){
+        let maFonctionAnonyme = function (name = '') {
             let test = 'coucou';
             return `${test} ${name}`;
         };
@@ -65,7 +65,7 @@
             // le ternaire
             // (condition)? résultat si la condition est vraie : résultat si la condition est fausse ;
             //return (null === name)? 'Hello Kitty' : `Hello ${name}`;
-            return `Hello ${ (null === name)? 'Kitty' : name }`;
+            return `Hello ${(null === name) ? 'Kitty' : name}`;
         };
 
         console.log(maFonctionAnonyme2());
@@ -77,9 +77,9 @@
         */
 
         (
-          function(name){
-            console.log(`coucou ${name}`);
-          }  
+            function (name) {
+                console.log(`coucou ${name}`);
+            }
         )('Nicolas');
 
         /*
@@ -109,22 +109,23 @@
         console.log(tableauDeFruits);
         let cptFruit = 1;
         let temptFruit = '';
-        
+
         tableauDeFruits.forEach((element, index) => {
-            if(element === tableauDeFruits[index+1]){
-                cptFruit = cptFruit+1
-            }else{
+            if (element === tableauDeFruits[index + 1]) {
+                cptFruit = cptFruit + 1
+            } else {
                 tableauxDoublons.push(`${element} ${cptFruit} fois`);
                 cptFruit = 1;
             }
         });
         console.log(tableauxDoublons);
-        
-        
+
+
 
 
     </script>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -145,7 +146,8 @@
                             <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
                             <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
                             <li><a class="dropdown-item" href="../introduction/fonctions.html">Fonctions</a></li>
-                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a>
+                            </li>
                             <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
                         </ul>
                     </li>
@@ -168,7 +170,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
-                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX</a></li>
+                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX & Fetch</a></li>
+                            <li><a class="dropdown-item" href="../ajax/promesse.html">Fonctions asynchrone & Promesse</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -46,7 +46,7 @@
                 */
             });
 
-            s('#btnClasseBg').addEventListener('click', function(){
+            s('#btnClasseBg').addEventListener('click', function () {
                 let cible = s('#cibleClasse');
                 cible.classList.toggle('bg-secondary');
             });
@@ -66,11 +66,11 @@
             let droite = s('#droite');
             let carre = s('#carre');
 
-            gauche.addEventListener('click', function(){
+            gauche.addEventListener('click', function () {
                 carre.className = 'gauche'
             });
-            droite.addEventListener('click', ()=> carre.className = 'droite');
-            centre.addEventListener('click', ()=> carre.removeAttribute('class'));
+            droite.addEventListener('click', () => carre.className = 'droite');
+            centre.addEventListener('click', () => carre.removeAttribute('class'));
 
         });
 
@@ -81,7 +81,7 @@
             font-weight: bold;
         }
 
-        #carre{
+        #carre {
             width: 100px;
             height: 100px;
             background-color: orange;
@@ -89,12 +89,12 @@
             transition: transform 1s;
         }
 
-        .gauche{
-            transform: translateX( calc( -1 * (100vw/2 - 100px) ) );
+        .gauche {
+            transform: translateX(calc(-1 * (100vw/2 - 100px)));
         }
 
-        .droite{
-            transform: translateX( calc( 100vw/2 - 100px)  );
+        .droite {
+            transform: translateX(calc(100vw/2 - 100px));
         }
     </style>
 </head>
@@ -143,7 +143,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
-                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX</a></li>
+                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX & Fetch</a></li>
+                            <li><a class="dropdown-item" href="../ajax/promesse.html">Fonctions asynchrone & Promesse</a></li>
                         </ul>
                     </li>
                 </ul>

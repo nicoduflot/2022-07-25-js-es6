@@ -26,12 +26,12 @@
         // les tableau sont l'équivalent d'objets itérables
 
         console.log('----------------- boucle for -------------');
-        for(let i = 0; i < cars.length; i++){
+        for (let i = 0; i < cars.length; i++) {
             console.log(`la valeur de cars à l'indice ${i} est ${cars[i]}`);
         }
 
         console.log('----------------- boucle for in -------------');
-        for(let index in cars){
+        for (let index in cars) {
             console.log(`la valeur de cars à l'index ${index} est ${cars[index]}`);
         }
 
@@ -40,7 +40,7 @@
         let obj = {
             nom: 'Duflot',
             prenom: 'Nicolas',
-            presentation: function(){
+            presentation: function () {
                 return `je m'appele ${this.prenom} ${this.nom}`;
             }
         };
@@ -50,14 +50,14 @@
         console.log(obj.presentation);
         console.log(obj.presentation());
 
-        for(let key in obj){
+        for (let key in obj) {
             console.log(`la clef ${key} est ${obj[key]}`);
         }
 
         let obj2 = {
             nom: 'Sno',
             prenom: 'Jon',
-            presentation: function(){
+            presentation: function () {
                 return `je m'appele ${this.prenom} ${this.nom} et je connais rien`;
             }
         };
@@ -69,31 +69,31 @@
 
         // depuis es6
         console.log('----------------- boucle for of -------------');
-        for(let value of cars){
+        for (let value of cars) {
             console.log(`la valeur actuelle dans le tableau cars est ${value}`);
         }
 
         console.log('----------- boucle tant que -------------');
         let cpt = 0;
-        while(cpt < cars.length){
+        while (cpt < cars.length) {
             console.log(cars[cpt]);
             cpt++;
         }
 
         console.log('----------- boucle faire tant que -------------');
         cpt = 0;
-        do{
+        do {
 
-            if(cars[cpt]){
+            if (cars[cpt]) {
                 console.log(cars[cpt]);
             }
             cpt++;
         }
-        while(cpt < cars.length)
+        while (cpt < cars.length)
 
         // forEach
         console.log('----------- méthode forEach -------------');
-        cars.forEach( function(value, index, tab){
+        cars.forEach(function (value, index, tab) {
             console.log(`à l'index ${index} du tableau ${cars} | ${tab} la valeur est ${value}`);
         });
 
@@ -104,7 +104,7 @@
         */
 
         console.log('----------- méthode .entries() -------------');
-        for(let entry of cars.entries()){
+        for (let entry of cars.entries()) {
             console.log(entry);
         }
 
@@ -126,7 +126,7 @@
 
         console.log(tabMoche);
 
-        for(let i = 0; i < tabMoche.length; i++){
+        for (let i = 0; i < tabMoche.length; i++) {
             console.log(`la valeur de cars à l'indice ${i} est ${tabMoche[i]}`);
         }
 
@@ -168,31 +168,31 @@
         let motTeste = 'kayak';
         let test = motTeste.split('');
         test = test.reverse();
-        if(motTeste === test.join('')){
+        if (motTeste === test.join('')) {
             console.log(`motTeste est un palyndrome`);
         }
 
         // et les tableau à 2 dimensions
-        carsTest = [ ['Fiat', 1956], ['Kyia', 1995], ['Kyia', 1990], ['Ford', 1950], ['12', '2001'], ['12', '0250'] ];
+        carsTest = [['Fiat', 1956], ['Kyia', 1995], ['Kyia', 1990], ['Ford', 1950], ['12', '2001'], ['12', '0250']];
         console.table(carsTest);
         carsTest.sort();
         console.table(carsTest);
         // les tableaux à deux dimension ne sont pas applicable en javascript
-        let tab2d = [ ['a', 'b', 'c'], [12, 12, 13, 14, 15], [10, 23, 56, 4] ];
+        let tab2d = [['a', 'b', 'c'], [12, 12, 13, 14, 15], [10, 23, 56, 4]];
         console.log(tab2d);
         console.log(tab2d[1]);
         console.log(tab2d[1][2]);
         console.table(tab2d);
         console.log('------ parcourir tab2 for ----------');
-        for(let i = 0; i < tab2d.length; i++ ){
-            for(let j = 0; j < tab2d[i].length; j++){
+        for (let i = 0; i < tab2d.length; i++) {
+            for (let j = 0; j < tab2d[i].length; j++) {
                 console.log(tab2d[i][j]);
             }
         }
 
         // avec un for of
-        for(let value of tab2d){
-            for(let subValue of value){
+        for (let value of tab2d) {
+            for (let subValue of value) {
                 console.log(subValue);
             }
         }
@@ -203,9 +203,9 @@
         console.log('----------- .find() ------------');
         let arrayNum = [5, 8, 12, 130, 3, 44];
 
-        let found = arrayNum.find( function(element){
+        let found = arrayNum.find(function (element) {
             return 20 < element;
-        } );
+        });
 
         console.log(found);
 
@@ -215,7 +215,7 @@
             return 20 < element;
         } );
         */
-       // opérateur arrow => raccourcis d'écriture des fonction de rappel ou callback function ou fonction anonyme
+        // opérateur arrow => raccourcis d'écriture des fonction de rappel ou callback function ou fonction anonyme
         /*
         let foundFilter = arrayNum.filter( (element)=>{
             return 20 < element;
@@ -225,23 +225,23 @@
         let foundFilter = arrayNum.filter( (element)=>20 < element );
         */
 
-        console.log(arrayNum.filter( (element)=> 20 < element ));
+        console.log(arrayNum.filter((element) => 20 < element));
 
         // les fonctions anonyme peuvent avoir des conséquences (notamment sur les objets)
         console.log('--------- les conséquences -----------');
         let monObjet = {
             numbers: [5, 8, 12, 130, 3, 44],
-            affTab: function(){
+            affTab: function () {
                 console.log(this);
                 let _this = this;
-                this.numbers.forEach(function(value){
+                this.numbers.forEach(function (value) {
                     //console.log(this);
                     //console.log(_this);
                 });
             },
-            affTabArrow: function(){
+            affTabArrow: function () {
                 console.log(this);
-                this.numbers.forEach( (value)=>{
+                this.numbers.forEach((value) => {
                     console.log(this);
                 });
             }
@@ -252,15 +252,16 @@
 
         // .map
         let numbers = [5, 8, 12, 130, 3, 44];
-        let newNumbers = numbers.map(function(toto, i, tab){
-            return toto*10;
+        let newNumbers = numbers.map(function (toto, i, tab) {
+            return toto * 10;
         });
 
         console.log(numbers);
         console.log(newNumbers);
-        
+
     </script>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -281,7 +282,8 @@
                             <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
                             <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
                             <li><a class="dropdown-item" href="../introduction/fonctions.html">Fonctions</a></li>
-                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a>
+                            </li>
                             <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
                         </ul>
                     </li>
@@ -304,7 +306,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
-                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX</a></li>
+                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX & Fetch</a></li>
+                            <li><a class="dropdown-item" href="../ajax/promesse.html">Fonctions asynchrone & Promesse</a></li>
                         </ul>
                     </li>
                 </ul>

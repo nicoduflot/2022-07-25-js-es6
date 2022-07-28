@@ -12,7 +12,7 @@
         /*
         Commentaire en bloc
         */
-        
+
         // variables : les déclarations de variables
         var prenom = 'Jean';
         console.log(prenom);
@@ -30,7 +30,7 @@
         console.log(prenom);
         console.log(typeof prenom);
 
-        function test(){
+        function test() {
             var prenom = 'toto';
         }
 
@@ -40,7 +40,7 @@
         // depuis es6 il est recommandé de déclarer les variables ainsi
         let nom = 'l\'oreal';
         console.log(nom);
-        function test2(){
+        function test2() {
             let nom = 'toto';
         }
 
@@ -69,39 +69,39 @@
         console.log(tab.length);
         console.log(typeof tab);
 
-       // JS est un langage non typé
-       /**
-        * Type 
-        * [primitif]
-        * number            =>, nombre (entier ou a virgule flottante)
-        * bool              => Booléen true or false
-        * 
-        * [reference]
-        * String            => chaîne de caractère
-        * Array             => tableau de données
-        * Object            => Object
-        * JSON              => JavaScript Object Notation
-        * 
-       */
+        // JS est un langage non typé
+        /**
+         * Type 
+         * [primitif]
+         * number            =>, nombre (entier ou a virgule flottante)
+         * bool              => Booléen true or false
+         * 
+         * [reference]
+         * String            => chaîne de caractère
+         * Array             => tableau de données
+         * Object            => Object
+         * JSON              => JavaScript Object Notation
+         * 
+        */
 
-       /**
-        * Opérateurs
-        * 
-        * Mathématiques
-        * 
-        * + addition (et aussi la concaténation)
-        * - 
-        * /
-        * %
-        * *
-        * **    (Math.pow(2,3) => 8)
-        *       2**3 => 8
-        * 
-        * incrémentation
-        * ++
-        * décrémentation
-        * --
-       */
+        /**
+         * Opérateurs
+         * 
+         * Mathématiques
+         * 
+         * + addition (et aussi la concaténation)
+         * - 
+         * /
+         * %
+         * *
+         * **    (Math.pow(2,3) => 8)
+         *       2**3 => 8
+         * 
+         * incrémentation
+         * ++
+         * décrémentation
+         * --
+        */
 
         let cpt = 0;
         cpt = cpt + 1;      // ajoute 1 à cpt => 1
@@ -159,13 +159,13 @@
         console.log('tata'); // meilleure façon pour juste du texte
 
         console.log(`a : ${a}, b : ${b}`);
-        console.log(`a + b = ${a+b}`);
+        console.log(`a + b = ${a + b}`);
         console.log('a + b = ' + a + b);
         console.log('a + b = ' + (a + b));
-        console.log(`a * b = ${a*b}`);
-        console.log(`a / b = ${a/b}`);
-        console.log(`a % b = ${a%b}`);
-        console.log(`a**b = ${a**b}`);
+        console.log(`a * b = ${a * b}`);
+        console.log(`a / b = ${a / b}`);
+        console.log(`a % b = ${a % b}`);
+        console.log(`a**b = ${a ** b}`);
 
         /*
         // petit bout de java
@@ -179,33 +179,34 @@
         "Chaîne".equal(b); // retoune faux
         */
 
-       /**
-        * Opérateurs de comparaison
-        * 
-        * < strictement inférieur
-        * > strictement supérieur
-        * <= inférieur ou égal
-        * >= suppérieur ou égal
-        * 
-        * ==    égalité sur la valeur
-        * !=    non égalité (différent) sur la valeur
-        * 
-        * ===   égalité sur la valeur ET le type
-        * !==   non égalité (différent) sur la valeur ET le type
-        * 
-       */
+        /**
+         * Opérateurs de comparaison
+         * 
+         * < strictement inférieur
+         * > strictement supérieur
+         * <= inférieur ou égal
+         * >= suppérieur ou égal
+         * 
+         * ==    égalité sur la valeur
+         * !=    non égalité (différent) sur la valeur
+         * 
+         * ===   égalité sur la valeur ET le type
+         * !==   non égalité (différent) sur la valeur ET le type
+         * 
+        */
 
-       console.log(`'12' == 12 => ${'12' == 12}`); // => retourne vrai
-       console.log(`'12' === 12 => ${'12' === 12}`); // => retourne faux
+        console.log(`'12' == 12 => ${'12' == 12}`); // => retourne vrai
+        console.log(`'12' === 12 => ${'12' === 12}`); // => retourne faux
 
-       function test3(){
-        return 12*3;
-       }
+        function test3() {
+            return 12 * 3;
+        }
 
-       console.log(`${12*12} = 12x12, test3 = ${test3()}`);
-        
+        console.log(`${12 * 12} = 12x12, test3 = ${test3()}`);
+
     </script>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -226,7 +227,8 @@
                             <li><a class="dropdown-item" href="../introduction/index.html">Introduction</a></li>
                             <li><a class="dropdown-item" href="../introduction/tableaux.html">Tableaux</a></li>
                             <li><a class="dropdown-item" href="../introduction/fonctions.html">Fonctions</a></li>
-                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a></li>
+                            <li><a class="dropdown-item" href="../introduction/destructuration.html">Déstructuration</a>
+                            </li>
                             <li><a class="dropdown-item" href="../introduction/storage.html">Storage</a></li>
                         </ul>
                     </li>
@@ -249,7 +251,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
-                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX</a></li>
+                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX & Fetch</a></li>
+                            <li><a class="dropdown-item" href="../ajax/promesse.html">Fonctions asynchrone & Promesse</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -285,18 +288,19 @@
                         Jusqu'en 2010, JS était mal considéré par les développeurs ( peu normé, trop permissif )
                     </p>
                     <p>
-                        L'arrivée de Google Chrome, avec en plus l'envie de Google de refaire fonctionner correctement JS.
+                        L'arrivée de Google Chrome, avec en plus l'envie de Google de refaire fonctionner correctement
+                        JS.
                         Création du moteur d'interprétation V8.
                         => un boost des capacitées de JS et son éxécution
                     </p>
                     <p>
-                        Grâce au V8, des nouveau langages ou méthode de développement sont arrivées, notemment NodeJs (2009), 
+                        Grâce au V8, des nouveau langages ou méthode de développement sont arrivées, notemment NodeJs
+                        (2009),
                         qui s'appuis sur JS mais s'éxécute sur le serveur
                     </p>
                     <p>
-                        La convention du code en es6 est visible sur Github 
-                        <a href="https://github.com/elierotenberg/coding-styles/blob/master/es6.md" 
-                        target="_blank">
+                        La convention du code en es6 est visible sur Github
+                        <a href="https://github.com/elierotenberg/coding-styles/blob/master/es6.md" target="_blank">
                             es6
                         </a>
                     </p>

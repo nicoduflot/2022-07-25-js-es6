@@ -14,7 +14,7 @@
             let xhr = getXhr();
             let result = document.querySelector('#result');
             sAll('button.btn[data-url]').forEach(btn => {
-                btn.addEventListener('click', function(){
+                btn.addEventListener('click', function () {
                     console.log(this);
                     // méthode open utilisant un verb http ( GET, POST), url, asyn (true par défaut ou false), login, password
                     /*
@@ -24,7 +24,7 @@
                     console.log(xhr);
                     */
 
-                    xhr.onreadystatechange = function(){
+                    xhr.onreadystatechange = function () {
                         /*
                         0 : unsent              -> .open() n'a pas encore été appelé
                         1 : openned             -> .open() a été appelé
@@ -62,7 +62,7 @@
 
     </script>
     <style>
-        
+
     </style>
 </head>
 
@@ -110,7 +110,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
-                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX</a></li>
+                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX & Fetch</a></li>
+                            <li><a class="dropdown-item" href="../ajax/promesse.html">Fonctions asynchrone & Promesse</a></li>
                         </ul>
                     </li>
                 </ul>

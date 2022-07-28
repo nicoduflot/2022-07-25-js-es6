@@ -12,29 +12,29 @@
         loaded(function () {
             let result = document.querySelector('#result tbody');
             sAll('button.btn[data-url]').forEach(btn => {
-                btn.addEventListener('click', function(){
-                    fetch(btn.dataset.url)
-                    .then(reponse => reponse.json())
-                    .then(data => {
-                        result.innerHTML = jsonUsersToHTMLTable(data);
-                    })
-                    .catch(function(error){
-                        console.log(`erreur à la connexion ${error.message}`);
-                    })
-                    .finally(function(){
-                        console.log('connexion terminée');
-                    });
+                btn.addEventListener('click', function () {
+                    fetch(btn.dataset.url) // faire une requête à un serveur sur une ressource
+                        .then(reponse => reponse.json()) // une fois la réponse serveur positive, le flux est converti en json
+                        .then(data => {
+                            result.innerHTML = jsonUsersToHTMLTable(data); // le flux converti est interprété dans une fonction
+                        })
+                        .catch(function (error) { // si la réponse serveur est négative, on réccupère l'erreur générée
+                            console.log(`erreur à la connexion ${error.message}`);
+                        })
+                        .finally(function () { // que la réponse soit positive ou négative, l'action a effectué
+                            console.log('connexion terminée');
+                        });
                 });
             });
 
-            result.addEventListener('click', function(event){
+            result.addEventListener('click', function (event) {
                 console.log(event.target.parentNode.dataset);
             });
         });
 
     </script>
     <style>
-        
+
     </style>
 </head>
 
@@ -82,7 +82,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
-                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX</a></li>
+                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX & Fetch</a></li>
+                            <li><a class="dropdown-item" href="../ajax/promesse.html">Fonctions asynchrone & Promesse</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -101,7 +102,8 @@
                     <main>
                         <h3>xhr : Xml Http Request</h3>
                         <p>
-                            <button class="btn btn-secondary btn-sm read" data-url="https://jsonplaceholder.typicode.com/users">
+                            <button class="btn btn-secondary btn-sm read"
+                                data-url="https://jsonplaceholder.typicode.com/users">
                                 API REST jsonPlaceholder
                             </button>
                             <button class="btn btn-secondary btn-sm read" data-url="../resource/bdd.json">
@@ -118,12 +120,12 @@
                                 <th>Email</th>
                             </thead>
                             <tbody>
-                                
+
                             </tbody>
                         </table>
                     </main>
                 </article>
-        </section>
+            </section>
     </main>
 </body>
 

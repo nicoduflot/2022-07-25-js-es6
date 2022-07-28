@@ -15,38 +15,38 @@
             console.log(navDataset.dataset);
             console.log(navDataset.dataset.bsToggle);
 
-            s('h2[data-title]').addEventListener('click', function(){
+            s('h2[data-title]').addEventListener('click', function () {
                 console.log(s('h2[data-title]').dataset.title);
             });
 
             let pDModule = sAll('p[data-module]');
             console.log(pDModule);
-            
+
             pDModule.forEach(element => {
-                switch(element.dataset.module){
+                switch (element.dataset.module) {
                     case 'color':
                         // code a appliquer
                         let color = element.dataset.color || '#f00';
-                        element.addEventListener('mouseover', function(){
+                        element.addEventListener('mouseover', function () {
                             this.style.setProperty('color', color);
                         });
-                        element.addEventListener('mouseout', function(){
+                        element.addEventListener('mouseout', function () {
                             this.style.removeProperty('color');
                         });
-                    break; // sortir du switch
+                        break; // sortir du switch
                     case 'font':
                     case 'magie':
                         let weight = element.dataset.weight || 'lighter';
-                        element.addEventListener('mouseover', function(){
+                        element.addEventListener('mouseover', function () {
                             this.style.setProperty('font-weight', weight);
                         });
-                        element.addEventListener('mouseout', function(){
+                        element.addEventListener('mouseout', function () {
                             this.style.removeProperty('font-weight');
                         });
-                    break;
+                        break;
                     case 'after':
                     default:
-                        // cas par défaut ou module = after
+                    // cas par défaut ou module = after
                 }
             });
 
@@ -72,16 +72,16 @@
             tdPointeur.forEach(element => {
                 //console.log(element.parentNode);
                 let colonne = element.dataset.column;
-                element.addEventListener('mouseover', function(){
+                element.addEventListener('mouseover', function () {
                     element.parentNode.style.backgroundColor = ('rgba(255, 0, 0, 0.5)');
-                    sAll(`td[data-column="${colonne}"]`).forEach(td=>{
+                    sAll(`td[data-column="${colonne}"]`).forEach(td => {
                         td.style.backgroundColor = ('rgba(255, 0, 0, 0.5)');
                     });
                 });
 
-                element.addEventListener('mouseout', function(){
+                element.addEventListener('mouseout', function () {
                     element.parentNode.style.removeProperty('background-color');
-                    sAll(`td[data-column="${colonne}"]`).forEach(td=>{
+                    sAll(`td[data-column="${colonne}"]`).forEach(td => {
                         td.style.removeProperty('background-color');
                     });
                 });
@@ -93,18 +93,60 @@
 
             // définir la première couleur
             let colorNow = 'bg-danger';
-            sAll('#p4 th').forEach(function(tableCol){
+            sAll('#p4 th').forEach(function (tableCol) {
                 let colonne = 0;
-                tableCol.addEventListener('click', function(){
+                tableCol.addEventListener('click', function () {
                     colonne = this.dataset.col;
-                    for(i = 6; i > 0; i--){
+                    for (i = 6; i > 0; i--) {
                         let cell = s(`td[data-col="${colonne}"][data-row="${i}"]`);
-                        if( !cell.classList.contains('bg-danger') && !cell.classList.contains('bg-primary') ){
+                        if (!cell.classList.contains('bg-danger') && !cell.classList.contains('bg-primary')) {
                             cell.classList.add(colorNow);
-                            colorNow = ('bg-danger' === colorNow)? 'bg-primary': 'bg-danger';
+                            colorNow = ('bg-danger' === colorNow) ? 'bg-primary' : 'bg-danger';
                             break;
                         }
                     }
+                });
+            });
+
+            /*
+            <table id="matrice" class="table">
+                        <tr>
+                            <td><input type="text" class="form-control" data-line="1" data-col="1" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="1" data-col="2" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="1" data-col="3" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="1" data-col="4" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="1" data-col="5" value="0" /></td>
+                            <th><span data-line="1"></th>
+            */
+
+            tdDataInput = sAll('#matrice input[data-line][data-col]');
+            thDataOutput = sAll('#matrice th span');
+            //console.log(tdDataInput);
+            //console.log(thDataOutput);
+            function calculMatrice() {
+                let actualLine = 1;
+                let actualCol = 1;
+                let resLine = 0;
+                // calcul des lignes
+                tdDataInput.forEach(function (inputData) {
+                    if (actualLine == inputData.dataset.line) {
+                        resLine += parseFloat(inputData.value);
+                        if (actualLine == 5 && inputData.dataset.col == 5) {
+                            s(`#matrice th span[data-line="${actualLine}"]`).innerHTML = resLine;
+                        }
+                    } else {
+                        s(`#matrice th span[data-line="${actualLine}"]`).innerHTML = resLine;
+                        actualLine++;
+                        resLine = parseFloat(inputData.value);
+                    }
+                });
+            }
+
+            calculMatrice();
+
+            tdDataInput.forEach(function (element) {
+                element.addEventListener('change', function () {
+                    calculMatrice();
                 });
             });
 
@@ -112,7 +154,7 @@
 
     </script>
     <style>
-        
+
     </style>
 </head>
 
@@ -160,7 +202,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="../ajax/index.html">AJAX</a></li>
-                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX</a></li>
+                            <li><a class="dropdown-item" href="../ajax/bdd.html">AJAX & Fetch</a></li>
+                            <li><a class="dropdown-item" href="../ajax/promesse.html">Fonctions asynchrone & Promesse</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -192,63 +235,63 @@
                     </p>
                     <hr />
                     <p data-module="color">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="color" data-color="#09f">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="color" data-color="orange">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="font" data-weight="bold">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="magie">
                         Lorem ipsum dolor sit amet,
-                        consectetur adipisicing &nbsp;elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        consectetur adipisicing &nbsp;elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <p data-module="after">
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipisicing elit. 
-                        Sed, quidem! Quod sapiente consequatur 
-                        eius in officia ducimus nisi, totam quo 
-                        vitae voluptate, quasi rerum! Debitis 
+                        Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Sed, quidem! Quod sapiente consequatur
+                        eius in officia ducimus nisi, totam quo
+                        vitae voluptate, quasi rerum! Debitis
                         aliquid aliquam et suscipit ab!
                     </p>
                     <hr />
                     <p>
                         Coordonnées : <span id="xy">x : &nbsp; - y : &nbsp;</span>
                     </p>
-                    
+
                     <p>
                         <label>X : </label><input id="xValue" type="range" min="0" max="4" step="1" value="0" /><br />
                         <label>y : </label><input id="yValue" type="range" min="0" max="4" step="1" value="0" />
                     </p>
-                    
+
                     <table id="coord" class="table" style="width: 300px;">
                         <tr>
                             <td data-column="0" data-line="0">0 - 0</td>
@@ -355,6 +398,56 @@
                                 <td data-col="7" data-row="6">&nbsp;</td>
                             </tr>
                         </tbody>
+                    </table>
+                    <h2>Calcul de matrice</h2>
+                    <table id="matrice" class="table">
+                        <tr>
+                            <td><input type="text" class="form-control" data-line="1" data-col="1" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="1" data-col="2" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="1" data-col="3" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="1" data-col="4" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="1" data-col="5" value="0" /></td>
+                            <th><span data-line="1"></th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" data-line="2" data-col="1" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="2" data-col="2" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="2" data-col="3" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="2" data-col="4" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="2" data-col="5" value="0" /></td>
+                            <th><span data-line="2"></th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" data-line="3" data-col="1" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="3" data-col="2" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="3" data-col="3" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="3" data-col="4" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="3" data-col="5" value="0" /></td>
+                            <th><span data-line="3"></th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" data-line="4" data-col="1" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="4" data-col="2" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="4" data-col="3" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="4" data-col="4" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="4" data-col="5" value="0" /></td>
+                            <th><span data-line="4"></th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" data-line="5" data-col="1" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="5" data-col="2" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="5" data-col="3" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="5" data-col="4" value="0" /></td>
+                            <td><input type="text" class="form-control" data-line="5" data-col="5" value="0" /></td>
+                            <th><span data-line="5"></th>
+                        </tr>
+                        <tr>
+                            <th><span data-col="1"></span></th>
+                            <th><span data-col="2"></span></th>
+                            <th><span data-col="3"></span></th>
+                            <th><span data-col="4"></span></th>
+                            <th><span data-col="5"></span></th>
+                        </tr>
                     </table>
                 </main>
             </article>
