@@ -11,8 +11,191 @@
     <script>
         loaded(function () {
             
-        });
 
+            // création d'un objet (détails en analysant les objets pre es6)
+
+            // pour créer il faut unprototype, pour cela il faut un constructeur du prototype
+            // constructeur
+
+            function Humain(nom, prenom, age){
+                this.nom = nom;
+                this.prenom = prenom;
+                this.age = age;
+                this.esperanceDeVie = parseFloat(this.age) + Math.floor( Math.random()*20 );
+            }
+
+            // donner la possibilité à l'objet de faire des chose
+            // l'humain sait dire son nom
+
+            Humain.prototype.monNom = function(){
+                return `je suis ${this.prenom} ${this.nom}`;
+            }
+
+            /*
+            tous les humains crient quand ils ont mal 
+            il n'est pas utile de'associer cette méthode à un 
+            objet créé à partir du constructeur, 
+            il s'agit donc d'une méthode statique
+            */
+
+            Humain.crier = function(cri = ''){
+                return `${cri} RRRRRRRRRR !`;
+            }
+
+            let mon1erHumain = new Humain('Le sage', 'Crao', 30);
+            let mon2emeHumain = new Humain('Fils de Crao le sage', 'Rahan', 18);
+
+            console.log(mon1erHumain);
+            console.log(mon1erHumain.monNom());
+            console.log(mon2emeHumain);
+            console.log(mon2emeHumain.monNom());
+
+            console.log(Humain.crier());
+            console.log(Humain.crier('Crom !'));
+
+            // JSON
+            /*
+            on peut usiliser la synthaxe JSON pour créer un objet
+            La clef des propriétés, au contraire d'un objet litéral,
+            est écrite en chaine de caractère
+            */
+            let objJson = {
+                'nom': 'Le Barbare',
+                'prenom': 'Conan',
+                'action': function(){
+                    return 'TAPER !';
+                }
+            }
+
+            console.log(objJson);
+            console.log(objJson.nom);
+            console.log(objJson.action());
+
+            // depuis es6, on crée les objets
+            //en objet litéral
+
+            let objetLiteral = {
+                nom: 'Duflot',
+                prenom: 'Nicolas',
+                job: 'Sensei',
+                action: function(){
+                    return `C'est mon job : ${this.job.toUpperCase()} !`;
+                }
+            };
+
+            console.log(objetLiteral);
+            console.log(objetLiteral.nom);
+            console.log(objetLiteral.action());
+
+            // à l'aide de classe
+            /*
+            Les classes sont en es6
+
+            contrairement aux langages robustes (C++, Java...)
+            on ne peut pas déclarer les attribut en tant 
+            qu'attribut privés
+
+            on utilise une convention d'écriture pour préciser 
+            qu'un attribut sera considéré comme privé : il est préfixé d'un _
+            */
+
+            // créer une classe permet de "regrouper" la définition d'un objet
+            class Voiture{
+                // un classe possède un constructeur
+                // c'est lui qui crée l'objet quand on invoquera la classe dans une variable
+                constructor(marque, modele, couleur){
+                    this._marque = marque; // c'est ainsi qu'on identifie les attributs privés
+                    // ATTENTION /!\ l'attribut n'est pas réellement privé contrairement au php, C++, etc.
+                    this.modele = modele;
+                    this.couleur = couleur;
+                }
+
+                //si je veux pouvoir accéder (lire) la marque, elle est "théoriquement" déclarée en attribut privé
+                // il lui faut un getter
+                get getMarque(){
+                    return this._marque;
+                }
+
+                // setter pour _marque
+                set setMarque(marque){
+                    this._marque = marque;
+                }
+
+                // toutes les voitures créées auraont les méthodes suivante
+                demarrer(){
+                    return `la ${this.constructor.name} démarre.`;
+                }
+
+                avancer(){
+                    return `la ${this.constructor.name} avance.`;
+                }
+
+                // pour voir le nom du constructeur, la constante constructor.name existe
+                // appeler constructor permet d'afficher le contenu de la classe
+                showConstructor(){
+                    return this.constructor;
+                }
+
+                // méthode statique :
+                /*
+                Appartient à la classe, partagée entre toutes 
+                les instances d'une classe identique MAIS :
+                elle ne peut pas être appelée à partir d'une instance, 
+                seulement à partir de la classe directement
+                */
+                static klaxonner(){
+                    return 'POUEEET POUEEET !';
+                }
+
+            }
+
+            let maVoiture = new Voiture('Renault', 'Twingo', 'Vert poubelle');
+            console.log(maVoiture);
+            console.log(maVoiture.getMarque); // ça marche mais normalement on doit passer par un getter
+            console.log(maVoiture.modele);
+            console.log(maVoiture.demarrer());
+            console.log(maVoiture.showConstructor());
+            console.log(Voiture.klaxonner());
+
+            class Ambulance extends Voiture{
+                // la classe Ambulance est étendue de Voiture
+                // on n'a pas besoin de réécrire tout ce qui fait de l'Ambulance
+                // une Voiture
+                // il faut un constructeur, il doit être semblable à celui de voiture
+                constructor(marque, modele, couleur){
+                    super(marque, modele, couleur);
+                    if('Blanc'.toLocaleLowerCase() !== this.couleur.toLocaleLowerCase()){
+                        this.couleur = 'Blanc';
+                    }
+                    this.sirene = false;
+                }
+
+                // on peut surcharger - redéfinir - une méthode de
+                // la classe mère : la méthode collera plus à 
+                // l'objet créé par la classe fille
+                demarrer(){
+                    let bruit = '';
+                    bruit = (this.sirene)? 'PIN PON PIN PON !' : 'Vrrr rrrr rrrrrr';
+                    return `${super.demarrer()} ${bruit}`;
+                }
+
+                static klaxonner(){
+                    return 'POUEEEEEET !';
+                }
+
+            }
+
+            console.log(Ambulance.klaxonner());
+
+            let monAmbulance = new Ambulance('Citroën', 'break', 'Rouge');
+
+            console.log(monAmbulance);
+            console.log(monAmbulance.couleur);
+            console.log(monAmbulance.demarrer());
+            monAmbulance.sirene = true;
+            console.log(monAmbulance.demarrer());
+
+        });
     </script>
     <style>
 
