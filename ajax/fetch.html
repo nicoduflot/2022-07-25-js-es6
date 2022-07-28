@@ -10,8 +10,19 @@
     <script src="../js/script.js"></script>
     <script>
         loaded(function () {
-            
-
+            let thead = s('#result thead');
+            let tbody = s('#result tbody');
+            sAll('button.read').forEach(btn=>{
+                btn.addEventListener('click', function(){
+                    fetch(this.dataset.url)
+                    .then( reponse=> reponse.json() )
+                    .then( data => {
+                        let tabResult = jsonToTableObject(data);
+                        thead.innerHTML = tabResult[0];
+                        tbody.innerHTML = tabResult[1];
+                    });
+                });
+            });
         });
 
     </script>
@@ -75,7 +86,7 @@
     </nav>
     <main class="container">
         <section class="row">
-            <article class="col-lg-6">
+            <article class="col-12">
                 <header>
                     <h2>
                         AJAX - Fetch
@@ -89,6 +100,9 @@
                         </button>
                         <button class="btn btn-secondary btn-sm read" data-url="../resource/bdd.json">
                             bdd.json
+                        </button>
+                        <button class="btn btn-secondary btn-sm read" data-url="../resource/posts.json">
+                            posts.json
                         </button>
                     </p>
                     <table id="result" class="table table-striped">

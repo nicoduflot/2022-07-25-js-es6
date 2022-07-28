@@ -74,3 +74,58 @@ function jsonUsersToHTMLTable(data){
     }
     return html;
 }
+
+function jsonToTableObject(data){
+    let thead = '<tr>';
+    let tbody = '';
+    let firstRound = true;
+    // parcourir les éléments de 1er niveau dans le JSON
+    data.forEach(enregistrement=>{
+        // on parcour ainsi chaque enregistrement de 1er niveau
+        // on prépare le tbody
+        tbody += '<tr>';
+        for(key in enregistrement){
+            // on regarde les variable du 1er niveau, pour faire la différence entre les données et les object
+            tbody += '<td>';
+            if('object' !== typeof( enregistrement[key])){
+                if(firstRound){
+                    // si c'est le premier tour, on créer la colonne
+                    thead += `<th>${key}</th>`;
+                }
+                // si c'est un donnée, ça va dans une case
+                console.log(`${key}: `, enregistrement[key]);
+                tbody += enregistrement[key];
+            }else{
+                // si la variable est un objet, on parcour ses attributs
+                if(firstRound){
+                    // si c'est le premier tour, on créer la colonne
+                    thead += `<th>${key}</th>`;
+                }
+                console.log(`${key}: `);
+                for(subKey in enregistrement[key]){
+                    // comme la variables est un attribut, on va récupérer les données qui ne sont pas des objets
+                    if('object' !== typeof(enregistrement[key][subKey])){
+                        // on affiche les données
+                        console.log(subKey, enregistrement[key][subKey]);
+                        tbody += `${enregistrement[key][subKey]}<br />`;
+                    }else{
+                        // si c'est encore un objet, on le parcour pour récuppérer les dernières données
+                        console.log(`${subKey}:`);
+                        tbody += `<b>${subKey}:</b><br />`;
+                        for(subSubKey in enregistrement[key][subKey]){
+                            console.log(subSubKey, enregistrement[key][subKey][subSubKey]);
+                            tbody += `${enregistrement[key][subKey][subSubKey]}<br />`;
+                        }
+                    }
+                }
+            }
+            tbody += '</td>';
+        }
+        tbody += '</tr>';
+        firstRound = false;
+        console.log('-------------------------');
+    });
+
+    thead += '</tr>';
+    return [thead, tbody];
+}
