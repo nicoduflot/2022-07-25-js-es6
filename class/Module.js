@@ -1,7 +1,7 @@
 // c'est dans cette page de script que nous allons importer les fonctions ou la totalité des fonctions des fichier script js tiers
 
 import * as other from './Others.js';
-import loaded, {s, sAll} from './Utils.js';
+import loaded, {s, sAll, addSpan} from './Utils.js';
 import Toto, { Employee, Menuisier } from './Company.js';
 import Company from './Company.js';
 
@@ -28,5 +28,11 @@ loaded(function(){
     au clique sur le bouton id="addSpan" de la page, ajouter un span dans le paragraphe id="test"
     
     */
+
+    let buttonAddSpan = s('#addSpan');
+    let pTest = s('p#test');
+    buttonAddSpan.addEventListener('click', function(){
+        addSpan(pTest);
+    });
 
 });

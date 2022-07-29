@@ -36,3 +36,17 @@ export function getCookie(name){
     }
     return false;
 }
+
+export function addSpan(cible){
+    let span = document.createElement('span');
+    let spanContent = document.createTextNode(`Span`);
+    span.append(spanContent);
+    span.addEventListener('click', function(){
+        this.remove();
+    });
+    span.setAttribute('class', 'alert alert-success');
+    span.style.setProperty('width','100px');
+    span.style.setProperty('margin','10px');
+    span.style.setProperty('cursor','pointer');
+    cible.appendChild(span);
+}
