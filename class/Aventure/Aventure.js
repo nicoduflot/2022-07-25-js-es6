@@ -2,6 +2,9 @@ import Aventurier from "./Aventurier.js";
 import Guerrier from './Guerrier.js';
 import Voleur from './Voleur.js';
 import Mage from './Mage.js';
+import loaded, {s, sAll} from '../Utils.js';
+import {randClasse, createP} from'./MiseEnPlace.js';
+
 
 let monAventurier = new Aventurier('Le barbare', 'Conan');
 console.log(monAventurier);
@@ -41,3 +44,8 @@ let monMage = new Mage('Le gris', 'Daflgan');
 console.log(monMage);
 monMage.taper(monMechant);
 monMage.multi(monMechant);
+
+loaded(function(){
+    console.log(randClasse());
+    
+});
