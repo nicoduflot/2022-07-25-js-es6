@@ -127,6 +127,7 @@
                 let actualLine = 1;
                 let actualCol = 1;
                 let resLine = 0;
+                let resCol = 0;
                 // calcul des lignes
                 tdDataInput.forEach(function (inputData) {
                     if (actualLine == inputData.dataset.line) {
@@ -139,6 +140,27 @@
                         actualLine++;
                         resLine = parseFloat(inputData.value);
                     }
+                });
+
+                actualLine = 1;
+                actualCol = 1;
+                resLine = 0;
+                resCol = 0;
+                // calcul des lignes
+                tdDataInput.forEach(function (inputData) {
+                    console.log(inputData);
+                    /*
+                    if (actualCol == inputData.dataset.col) {
+                        resCol += parseFloat(inputData.value);
+                        if (actualCol == 5 && inputData.dataset.line == 5) {
+                            s(`#matrice th span[data-col="${actualCol}"]`).innerHTML = resCol;
+                        }
+                    } else {
+                        s(`#matrice th span[data-col="${actualCol}"]`).innerHTML = resCol;
+                        actualCol++;
+                        resCol = parseFloat(inputData.value);
+                    }
+                    */
                 });
             }
 
@@ -461,6 +483,7 @@
                             <th><span data-col="3"></span></th>
                             <th><span data-col="4"></span></th>
                             <th><span data-col="5"></span></th>
+                            <th>rien</th>
                         </tr>
                     </table>
                 </main>
