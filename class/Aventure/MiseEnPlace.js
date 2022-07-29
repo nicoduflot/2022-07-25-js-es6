@@ -33,3 +33,26 @@ export function createP(prenom, nom, classe){
         return false;
     }
 }
+
+export function fichePerso(perso){
+    let html = '';
+    html += `
+<table class="table">
+    <thead>
+    <tr class="table-dark">
+        <th>Nom : </th>
+        <th>Prénom : </th>
+        <th>Classe : </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>${perso.nom}</td>
+        <td>${perso.prenom}</td>
+        <td>${perso.constructor.name}</td>
+    </tr>
+    </tbody>
+</table>
+    `;
+    return html;
+}
