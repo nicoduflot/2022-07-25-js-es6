@@ -1,5 +1,7 @@
 import Aventurier from "./Aventurier.js";
 import Guerrier from './Guerrier.js';
+import Voleur from './Voleur.js';
+import Mage from './Mage.js';
 
 let monAventurier = new Aventurier('Le barbare', 'Conan');
 console.log(monAventurier);
@@ -19,14 +21,23 @@ console.log(monMechant.testSkill('cerveau'));
 
 monAventurier.taper(monMechant);
 console.log(monMechant);
-monMechant.soigner(monMechant, Math.floor(Math.random()*10 + 5));
+monMechant.soigner(monMechant, 50);
 console.log(monMechant);
 monAventurier.multi(monMechant);
 
 let monGuerrier = new Guerrier('Le canard', 'Herbert');
 console.log(monGuerrier);
-monMechant.soigner(monMechant, Math.floor(Math.random()*10 + 5));
-monMechant.soigner(monMechant, Math.floor(Math.random()*10 + 5));
+monMechant.soigner(monMechant, 50);
 monGuerrier.multi(monMechant);
-
+monMechant.soigner(monMechant, 50);
 monGuerrier.taper(monMechant);
+
+let monVoleur = new Voleur('Lupin', 'Arsène');
+console.log(monVoleur);
+monVoleur.taper(monMechant);
+monVoleur.multi(monMechant);
+monMechant.soigner(monMechant, 50);
+let monMage = new Mage('Le gris', 'Daflgan');
+console.log(monMage);
+monMage.taper(monMechant);
+monMage.multi(monMechant);
