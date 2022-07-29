@@ -1,4 +1,5 @@
 import Aventurier from "./Aventurier.js";
+import Guerrier from './Guerrier.js';
 
 let monAventurier = new Aventurier('Le barbare', 'Conan');
 console.log(monAventurier);
@@ -21,3 +22,11 @@ console.log(monMechant);
 monMechant.soigner(monMechant, Math.floor(Math.random()*10 + 5));
 console.log(monMechant);
 monAventurier.multi(monMechant);
+
+let monGuerrier = new Guerrier('Le canard', 'Herbert');
+console.log(monGuerrier);
+monMechant.soigner(monMechant, Math.floor(Math.random()*10 + 5));
+monMechant.soigner(monMechant, Math.floor(Math.random()*10 + 5));
+monGuerrier.multi(monMechant);
+
+monGuerrier.taper(monMechant);

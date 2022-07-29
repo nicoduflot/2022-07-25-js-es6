@@ -1,14 +1,22 @@
+import Arme from "./Arme.js";
 import Aventurier from "./Aventurier.js";
 export default class Guerrier extends Aventurier{
     constructor(nom, prenom){
-        this.nom = nom;
-        this.prenom = prenom;
-        this.bagarre = 3; // ici c'est 4
-        this.cerveau = 3; // ici c'est 2
-        this.arme = new Arme(); // arme par défaut un truc de bourrin mais moins que conan
-        this.pvBase = 50; // plus de PV + 20
+        super(nom, prenom);
+        this.bagarre = 4;
+        this.cerveau = 2;
+        this.arme = new Arme('Épée', 10);
+        this.pvBase = 70;
         this.pvActuel = this.pvBase;
+        this.tauxMulti = 1.2;
     }
 
     //changer le multi par doubler les dégâts
+    multi(cible){
+        console.log(`${this.prenom} lance attaque puissante`);
+        this.arme.degats = this.arme.degats*this.tauxMulti;
+        this.taper(cible);
+        this.arme.degats = this.arme.degats/this.tauxMulti;
+        console.log(`${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
+    }
 }
