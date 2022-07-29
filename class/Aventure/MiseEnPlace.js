@@ -42,17 +42,45 @@ export function fichePerso(perso){
     <tr class="table-dark">
         <th>Nom : </th>
         <th>Prénom : </th>
-        <th>Classe : </th>
+        <th colspan="2">Classe : </th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>${perso.nom}</td>
         <td>${perso.prenom}</td>
-        <td>${perso.constructor.name}</td>
+        <td colspan="2">${perso.constructor.name}</td>
+    </tr>
+    <tr>
+        <th>Bagarre</th>
+        <td>${perso.bagarre}</td>
+        <th>Cerveau</th>
+        <td>${perso.cerveau}</td>
+    </tr>
+    <tr>
+        <th>Pv base</th>
+        <td>${perso.pvBase}</td>
+        <th>Pv Actuel</th>
+        <td>${perso.pvActuel}</td>
+    </tr>
+    <tr>
+        <th colspan="2">Arme : </th>
+        <td colspan="2">${perso.arme.nom}, ${perso.arme.degats} dégâts</td>
     </tr>
     </tbody>
 </table>
     `;
     return html;
+}
+
+export function fichePersoConsole(personnage){
+    let lePerso = `
+${personnage.constructor.name}
+----------------------------------------------------------
+Personnage          :   ${personnage.prenom} ${personnage.nom}
+Son arme            :  ${personnage.arme.nom} 
+Dégats de base      :  ${personnage.arme.degats}
+PV (Actuels / Base) : ${personnage.pvActuel}/${personnage.pvBase}`;
+
+    return lePerso;
 }

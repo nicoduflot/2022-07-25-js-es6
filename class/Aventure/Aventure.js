@@ -3,7 +3,7 @@ import Guerrier from './Guerrier.js';
 import Voleur from './Voleur.js';
 import Mage from './Mage.js';
 import loaded, {s, sAll} from '../Utils.js';
-import {randClasse, createP, fichePerso} from'./MiseEnPlace.js';
+import {randClasse, createP, fichePerso, fichePersoConsole} from'./MiseEnPlace.js';
 
 /*
 let monAventurier = new Aventurier('Le barbare', 'Conan');
@@ -51,14 +51,14 @@ loaded(function(){
     let mechant = null;
     s('#createP').addEventListener('click', function(){
         gentil = createP(s('#prenomP').value, s('#nomP').value, s('#classeP').value);
-        console.log(gentil);
         s('#ficheP').innerHTML = fichePerso(gentil);
+        console.log(fichePersoConsole(gentil));
     });
 
     s('#createE').addEventListener('click', function(){
         mechant = createP(s('#prenomE').value, s('#nomE').value, randClasse());
-        console.log(mechant);
         s('#ficheE').innerHTML = fichePerso(mechant);
+        console.log(fichePersoConsole(mechant));
     });
 
     
