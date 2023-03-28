@@ -2,25 +2,34 @@ import Aventurier from "./Aventurier.js";
 import Guerrier from './Guerrier.js';
 import Voleur from './Voleur.js';
 import Mage from './Mage.js';
+import Arme from './Arme.js';
 import loaded, {s, sAll} from '../Utils.js';
 import {randClasse, createP, fichePerso, fichePersoConsole} from'./MiseEnPlace.js';
 
-/*
+
 let monAventurier = new Aventurier('Le barbare', 'Conan');
 console.log(monAventurier);
-monAventurier.arme.nom = 'Glaive';
-monAventurier.arme.degats = 15;
+console.log(monAventurier.prenom, monAventurier.arme);
+monAventurier.ajoutArme(new Arme('Glaive', 15))
+monAventurier.changerArme('Glaive');
+/*monAventurier.arme.nom = 'Glaive';
+monAventurier.arme.degats = 15;*/
 console.log(monAventurier);
-console.log(monAventurier.testSkill('bagarre'));
-console.log(monAventurier.testSkill('cerveau'));
+console.log(monAventurier.prenom, monAventurier.arme);
+console.log('test bagarre', monAventurier.testSkill('bagarre'));
+console.log('test cerveau',monAventurier.testSkill('cerveau'));
 
 let monMechant = new Aventurier('Le sorcier', 'Profion');
 console.log(monMechant);
-monMechant.arme.nom = 'Bâton';
-monMechant.arme.degats = 10;
+console.log(monMechant.prenom, monMechant.arme);
+monMechant.ajoutArme(new Arme('Bâton', 10));
+monMechant.changerArme('Bâton');
+/*monMechant.arme.nom = 'Bâton';
+monMechant.arme.degats = 10;*/
 console.log(monMechant);
-console.log(monMechant.testSkill('bagarre'));
-console.log(monMechant.testSkill('cerveau'));
+console.log(monMechant.prenom, monMechant.arme);
+console.log('test bagarre',monMechant.testSkill('bagarre'));
+console.log('test cerveau',monMechant.testSkill('cerveau'));
 
 monAventurier.taper(monMechant);
 console.log(monMechant);
@@ -44,7 +53,10 @@ let monMage = new Mage('Le gris', 'Daflgan');
 console.log(monMage);
 monMage.taper(monMechant);
 monMage.multi(monMechant);
-*/
+monMage.taper(monMechant);
+monMage.taper(monMechant);
+monMage.multi(monMechant);
+
 
 loaded(function(){
     let gentil = null;

@@ -7,6 +7,8 @@ export default class Aventurier{
         this.bagarre = 3;
         this.cerveau = 3;
         this.arme = new Arme();
+        this.tabArmes = [];
+        this.tabArmes.push(this.arme);
         this.pvBase = 50;
         this.pvActuel = this.pvBase;
     }
@@ -62,9 +64,31 @@ export default class Aventurier{
         }
     }
 
+    checkHealth(cible){
+        if(cible.pvActuel < 0){
+            console.log(`${cible.prenom} est hors de combat`);
+        }
+    }
+
+    ajoutArme(arme){
+        this.tabArmes.push(arme);
+        console.log(`${this.nom} ajoute ${arme.nom} (dg : ${arme.degats}) à son inventaire`);
+    }
+
+    changerArme(search){
+        for(let value of this.tabArmes){
+            if(value.nom === search){
+                console.log(`${this.prenom} change d'arme`);
+                let oldArme = this.arme;
+                this.arme = value;
+                console.log(`Il remplace ${oldArme.nom} par ${this.arme.nom}`);
+            }
+        }
+    }
+
     soigner(cible, valeur){
         this.modifierPV(cible, valeur, '+');
-        console.log(`${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
+        console.log(`soin : ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
     }
 
     taper(cible){
@@ -73,26 +97,27 @@ export default class Aventurier{
         switch(true){
             case (res < 7):
                 degats = 0;
-                console.log('Le coup est raté');
+                console.log(`${this.prenom} taper ${cible.prenom} : Le coup est raté`);
             break;
             case (res > 6 && res < 10):
                 degats = Math.ceil(this.arme.degats/2);
-                console.log(`le coup occasionne 1/2 dégats : ${degats}`);
+                console.log(`${this.prenom} taper ${cible.prenom} : le coup occasionne 1/2 dégats : ${degats}`);
             break;
             case (res > 9 && res < 12):
                 degats = this.arme.degats;
-                console.log(`le coup occasionne ${degats} degat(s)`);
+                console.log(`${this.prenom} taper ${cible.prenom} : le coup occasionne ${degats} degat(s)`);
             break;
             default:
                 degats = this.arme.degats*2;
-                console.log(`CRIT ! Le coup occasione ${degats} degat(s)`);
+                console.log(`${this.prenom} taper ${cible.prenom} : CRIT ! Le coup occasione ${degats} degat(s)`);
         }
         this.modifierPV(cible, degats, '-');
-        console.log(`${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
+        console.log(`${this.prenom} taper : ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
+        this.checkHealth(cible);
     }
 
     multi(cible){
-        console.log(`${this.prenom} lance son coup spécial`);
+        console.log(`${this.prenom} lance son coup spécial sur ${cible.prenom}`);
         this.taper(cible);
         this.taper(cible);
     }

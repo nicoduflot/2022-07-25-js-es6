@@ -17,14 +17,15 @@ export default class Mage extends Aventurier{
             dgSup += Math.floor(Math.random()*6+1);
         }
         let degats = this.arme.degats + dgSup;
-        console.log(`${this.prenom} occasionne ${this.arme.degats} dégats de base plus ${dgSup} pour ${degats} dégat(s) au total`);
+        console.log(`${this.prenom} occasionne ${this.arme.degats} dégats de base plus ${dgSup} pour ${degats} dégat(s) au total sur ${cible.prenom}`);
         this.modifierPV(cible, degats, '-');
     }
 
     //changer le multi par doubler les dégâts
     multi(cible){
-        console.log(`${this.prenom} Lance une boule de feu`);
+        console.log(`${this.prenom} Lance une boule de feu sur ${cible.prenom}`);
         this.bouleDeFeu(cible);
-        console.log(`${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
+        console.log(`multi sur ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
+        this.checkHealth(cible);
     }
 }
