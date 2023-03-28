@@ -11,6 +11,7 @@ export default class Aventurier{
         this.tabArmes.push(this.arme);
         this.pvBase = 50;
         this.pvActuel = this.pvBase;
+        this.niveauActuel = 1;
     }
 
     deuxD6plusSkill(valSkill = 0){
@@ -120,5 +121,11 @@ export default class Aventurier{
         console.log(`${this.prenom} lance son coup spécial sur ${cible.prenom}`);
         this.taper(cible);
         this.taper(cible);
+    }
+
+    changerNiveau(){
+        this.niveauActuel = this.niveauActuel + 1;
+        this.pvBase = this.pvBase * 1.1;
+        console.log(`${this.prenom} passe au niveau ${this.niveauActuel}`);
     }
 }

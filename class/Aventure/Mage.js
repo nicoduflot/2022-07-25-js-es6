@@ -28,4 +28,11 @@ export default class Mage extends Aventurier{
         console.log(`multi sur ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
         this.checkHealth(cible);
     }
+
+    changerNiveau(){
+        this.niveauActuel = this.niveauActuel + 1;
+        this.pvBase = this.pvBase * 1.1;
+        this.nbDBouleDeFeu = this.nbDBouleDeFeu + 1;
+        console.log(`${this.prenom} passe au niveau ${this.niveauActuel}`);
+    }
 }
