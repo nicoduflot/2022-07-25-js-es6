@@ -1,4 +1,6 @@
-// c'est dans cette page de script que nous allons importer les fonctions ou la totalité des fonctions des fichier script js tiers
+/*
+c'est dans cette page de script que nous allons importer les fonctions ou la totalité des fonctions des fichier script js tiers
+*/
 
 import * as other from './Others.js';
 import loaded, {s, sAll, addSpan} from './Utils.js';

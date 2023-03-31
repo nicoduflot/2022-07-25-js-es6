@@ -96,7 +96,8 @@ export function cEO(element, options = {}, parent = null){
         }      
     }
     if(null !== parent){
-        parent.appendChild(newElement)
+        parent.appendChild(newElement);
+        /* adjacent mdn */
     }
     return newElement;
 }

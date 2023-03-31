@@ -16,7 +16,7 @@ export default class Voleur extends Aventurier{
         }
         let degats = this.arme.degats + dgSup;
         console.log(`${this.prenom} occasionne ${this.arme.degats} dégats de base plus ${dgSup} pour ${degats} dégat(s) au total sur sur ${cible.prenom}`);
-        this.modifierPV(cible, degats, '-');
+        cible.modifierPV(-degats);
     }
 
     //changer le multi par doubler les dégâts
@@ -24,7 +24,7 @@ export default class Voleur extends Aventurier{
         console.log(`${this.prenom} attaque en traître sur ${cible.prenom}`);
         this.sneakAttack(cible);
         console.log(`multi sur ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
-        this.checkHealth(cible);
+        cible.checkHealth();
     }
 
     changerNiveau(){

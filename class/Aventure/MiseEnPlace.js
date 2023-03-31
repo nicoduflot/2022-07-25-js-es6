@@ -2,7 +2,7 @@ import Aventurier from "./Aventurier.js";
 import Guerrier from './Guerrier.js';
 import Voleur from './Voleur.js';
 import Mage from './Mage.js';
-import {q, cEO, cTN} from '../Utils.js';
+import {cEO, cTN} from '../Utils.js';
 
 let tabClasse = ['Aventurier', 'Guerrier', 'Voleur', 'Mage'];
 
@@ -40,7 +40,7 @@ export function fichePerso(perso){
     
     let thead= cEO('thead', {}, element);
     
-    let trHead = cEO('tr', {'class': ['table-dark']}, thead);
+    let trHead = cEO('tr', {'class': ['table-dark', 'toto']}, thead);
     let thNom = cEO('th', {}, trHead);
     cTN('Nom : ', thNom);
     let thPrenom = cEO('th', {}, trHead);
@@ -88,45 +88,6 @@ export function fichePerso(perso){
     cTN(' dg base', tdArme);
     
     return element;
-    /*
-    let html = '';
-    console.log(element.innerHTML);
-    html += `
-<table class="table">
-    <thead>
-    <tr class="table-dark">
-        <th>Nom : </th>
-        <th>Prénom : </th>
-        <th colspan="2">Classe : </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>${perso.nom}</td>
-        <td>${perso.prenom}</td>
-        <td colspan="2">${perso.constructor.name}</td>
-    </tr>
-    <tr>
-        <th>Bagarre</th>
-        <td>${perso.bagarre}</td>
-        <th>Cerveau</th>
-        <td>${perso.cerveau}</td>
-    </tr>
-    <tr>
-        <th>Pv base</th>
-        <td>${perso.pvBase}</td>
-        <th>Pv Actuel</th>
-        <td>${perso.pvActuel}</td>
-    </tr>
-    <tr>
-        <th colspan="2">Arme : </th>
-        <td colspan="2">${perso.arme.nom}, ${perso.arme.degats} dégâts</td>
-    </tr>
-    </tbody>
-</table>
-    `;
-    return html;
-    */
 }
 
 export function fichePersoConsole(personnage){

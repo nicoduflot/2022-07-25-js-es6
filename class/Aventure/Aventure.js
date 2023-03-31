@@ -7,56 +7,65 @@ import loaded, {s, sAll, q} from '../Utils.js';
 import {randClasse, createP, fichePerso, fichePersoConsole} from'./MiseEnPlace.js';
 
 /*
+
+*/
+
 let monAventurier = new Aventurier('Le barbare', 'Conan');
-console.log(monAventurier);
-console.log(monAventurier.prenom, monAventurier.arme);
 monAventurier.ajoutArme(new Arme('Glaive', 15))
 monAventurier.changerArme('Glaive');
-
-console.log(monAventurier);
-console.log(monAventurier.prenom, monAventurier.arme);
+console.log(fichePersoConsole(monAventurier));
 console.log('test bagarre', monAventurier.testSkill('bagarre'));
 console.log('test cerveau',monAventurier.testSkill('cerveau'));
-
+console.log('');
 let monMechant = new Aventurier('Le sorcier', 'Profion');
-console.log(monMechant);
-console.log(monMechant.prenom, monMechant.arme);
 monMechant.ajoutArme(new Arme('Bâton', 10));
 monMechant.changerArme('Bâton');
-console.log(monMechant);
-console.log(monMechant.prenom, monMechant.arme);
+console.log(fichePersoConsole(monMechant));
 console.log('test bagarre',monMechant.testSkill('bagarre'));
 console.log('test cerveau',monMechant.testSkill('cerveau'));
-
+console.log('');
 monAventurier.taper(monMechant);
-console.log(monMechant);
-monMechant.soigner(monMechant, 50);
-console.log(monMechant);
+console.log(fichePersoConsole(monMechant));
+monMechant.seSoigner(50);
+console.log(fichePersoConsole(monMechant));
 monAventurier.multi(monMechant);
+console.log(fichePersoConsole(monMechant));
 
 let monGuerrier = new Guerrier('Le canard', 'Herbert');
-console.log(monGuerrier);
-console.log(monGuerrier.tabArmes);
-monMechant.soigner(monMechant, 50);
+console.log(fichePersoConsole(monGuerrier));
+monMechant.seSoigner(50);
+console.log(fichePersoConsole(monMechant));
 monGuerrier.multi(monMechant);
-monMechant.soigner(monMechant, 50);
+console.log(fichePersoConsole(monMechant));
+monMechant.seSoigner(50);
+console.log(fichePersoConsole(monMechant));
 monGuerrier.taper(monMechant);
+console.log(fichePersoConsole(monMechant));
 monGuerrier.changerNiveau();
-console.log(monGuerrier);
+console.log(fichePersoConsole(monGuerrier));
 
 let monVoleur = new Voleur('Lupin', 'Arsène');
-console.log(monVoleur);
+console.log(fichePersoConsole(monVoleur));
 monVoleur.taper(monMechant);
+console.log(fichePersoConsole(monMechant));
 monVoleur.multi(monMechant);
-monMechant.soigner(monMechant, 50);
+console.log(fichePersoConsole(monMechant));
+monMechant.seSoigner(50);
+console.log(fichePersoConsole(monMechant));
+
 let monMage = new Mage('Le gris', 'Daflgan');
-console.log(monMage);
+console.log(fichePersoConsole(monMage));
 monMage.taper(monMechant);
+console.log(fichePersoConsole(monMechant));
 monMage.multi(monMechant);
+console.log(fichePersoConsole(monMechant));
 monMage.taper(monMechant);
+console.log(fichePersoConsole(monMechant));
 monMage.taper(monMechant);
+console.log(fichePersoConsole(monMechant));
 monMage.multi(monMechant);
-*/
+console.log(fichePersoConsole(monMechant));
+
 loaded(function(){
     let gentil = null;
     let mechant = null;

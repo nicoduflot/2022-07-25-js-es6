@@ -18,7 +18,7 @@ export default class Guerrier extends Aventurier{
         this.taper(cible);
         this.arme.degats = this.arme.degats/this.tauxMulti;
         console.log(`multi sur ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
-        this.checkHealth(cible);
+        cible.checkHealth();
     }
 
     changerNiveau(){
