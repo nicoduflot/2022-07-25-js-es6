@@ -13,11 +13,17 @@ export default class Guerrier extends Aventurier{
 
     //changer le multi par appliquer un taux de dégât supplémentaire
     multi(cible){
-        console.log(`${this.prenom} lance attaque puissante sur ${cible.prenom}`);
-        this.arme.degats = this.arme.degats*this.tauxMulti;
-        this.taper(cible);
-        this.arme.degats = this.arme.degats/this.tauxMulti;
-        console.log(`multi sur ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
+        if (this.pointsAventure > 0){
+            console.log(`${this.prenom} lance attaque puissante sur ${cible.prenom}`);
+            this.arme.degats = this.arme.degats*this.tauxMulti;
+            this.corpsACorps(cible);
+            this.arme.degats = this.arme.degats/this.tauxMulti;
+            console.log(`multi sur ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
+            this.pointsAventure = this.pointsAventure - 1;
+        }else{
+            console.log(`${this.prenom} n'a plus assez de point d'aventure pour lancer son multi`);
+            this.corpsACorps(cible);
+        }
         cible.checkHealth();
     }
 

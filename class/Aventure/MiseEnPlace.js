@@ -94,10 +94,11 @@ export function fichePersoConsole(personnage){
     let lePerso = `
 ${personnage.constructor.name}
 ----------------------------------------------------------
-Personnage          :   ${personnage.prenom} ${personnage.nom}
-Son arme            :  ${personnage.arme.nom} 
-Dégats de base      :  ${personnage.arme.degats}
-PV (Actuels / Base) : ${personnage.pvActuel}/${personnage.pvBase}`;
+Personnage          : ${personnage.prenom} ${personnage.nom}
+Son arme            : ${personnage.arme.nom} ${personnage.arme.degats} dg 
+Dégats de base      : ${personnage.arme.degats}
+PV (Actuels / Base) : ${personnage.pvActuel}/${personnage.pvBase}
+Armure              : ${personnage.armor}`;
 
     return lePerso;
 }
