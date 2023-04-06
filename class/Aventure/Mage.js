@@ -6,6 +6,7 @@ export default class Mage extends Aventurier{
         this.bagarre = 2;
         this.cerveau = 4;
         this.arme = new Arme('Bâton', 8);
+        this.sacADos.ajoutElement(this.arme);
         this.pvBase = 40;
         this.pvActuel = this.pvBase;
         this.nbDBouleDeFeu = 2;

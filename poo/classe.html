@@ -7,6 +7,7 @@
     <title>Formation Javascript Es6</title>
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <script src="../js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="../css/aventure.css" />
     <script type="module" src="../class/Aventure/Aventure.js"></script>
 </head>
 
@@ -78,29 +79,29 @@
     </nav>
     <main class="container">
         <section class="row">
-            <article class="col-lg-6">
+            <h2>
+                A l'aventure
+            </h2>
+            <article class="col-sm-12 col-md-6 col-lg-3">
                 <header>
-                    <h2>
-                        POO : À l'aventure
-                    </h2>
+                    <h3>Personnage</h3>
                 </header>
                 <main>
-                    <h3>Personnages</h3>
                     <p>
                         <label for="prenomP" class="form-label">
-                            Prénom :
+                            Prénom
                         </label>
                         <input type="text" id="prenomP" class="form-control" />
                     </p>
                     <p>
                         <label for="nomP" class="form-label">
-                            Nom :
+                            Nom
                         </label>
                         <input type="text" id="nomP" class="form-control" />
                     </p>
                     <p>
                         <label for="classeP" class="form-label">
-                            Choix de la classe du personnage :
+                            Choix de la classe du personnage
                         </label>
                         <select id="classeP" class="form-select">
                             <option selected value="Aventurier">Aventurier</option>
@@ -114,16 +115,26 @@
                             Créer le personnage.
                         </button>
                     </p>
+                    <div id="ficheP">
+
+                    </div>
                 </main>
             </article>
-            <article class="col-lg-6">
+            <article class="col-sm-12 col-md-6 col-lg-3">
                 <header>
-                    <h2>
-                        &nbsp;
-                    </h2>
+                    <h3>Inventaire du personnage</h3>
                 </header>
                 <main>
+                    <div id="inventaireHeros">
+    
+                    </div>
+                </main>
+            </article>
+            <article class="col-sm-12 col-md-6 col-lg-3">
+                <header>
                     <h3>Ennemi</h3>
+                </header>
+                <main>
                     <p>
                         <label for="prenomE" class="form-label">
                             Prénom :
@@ -136,29 +147,43 @@
                         </label>
                         <input type="text" id="nomE" class="form-control" />
                     </p>
-                    <p class="mt-5">
+                    <p>
                         <label class="form-label">
-                            La classe de l'ennemi sera choisie aléatoirement.
+                            La classe sera choisie aléatoirement.
                         </label>
+                        <select id="classeP" class="form-select" disabled>
+                            <option selected>Au hasard !</option>
+                        </select>
                     </p>
-                    <p class="mt-3">
+                    <p>
                         <button class="btn btn-secondary btn-small" id="createE">
                             Générer l'ennemi aléatoirement
                         </button>
                     </p>
+                    <div id="ficheE">
+                        
+                    </div>
                 </main>
             </article>
-        </section>
-        <section class="row">
-            <article class="col-lg-6">
-                <div id="ficheP">
-
-                </div>
+            <article class="col-sm-12 col-md-6 col-lg-3">
+                <header>
+                    <h3>Inventaire du méchant</h3>
+                </header>
+                <main>
+                    <div id="inventaireMechant">
+    
+                    </div>
+                </main>
             </article>
-            <article class="col-lg-6">
-                <div id="ficheE">
-                        
-                </div>
+            <article class="col-12">
+                <header>
+                    <h3>Inventaire du test dans la console</h3>
+                </header>
+                <main>
+                    <div id="inventaireConsole">
+    
+                    </div>
+                </main>
             </article>
         </section>
     </main>

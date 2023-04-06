@@ -6,6 +6,7 @@ export default class Guerrier extends Aventurier{
         this.bagarre = 4;
         this.cerveau = 2;
         this.arme = new Arme('Épée', 10);
+        this.sacADos.ajoutElement(this.arme);
         this.pvBase = 70;
         this.pvActuel = this.pvBase;
         this.tauxMulti = 1.2;

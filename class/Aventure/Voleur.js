@@ -6,6 +6,7 @@ export default class Voleur extends Aventurier{
         this.bagarre = 3;
         this.cerveau = 3;
         this.arme = new Arme('Dague', 8);
+        this.sacADos.ajoutElement(this.arme);
         this.dgSupBackstab = 1;
     }
 

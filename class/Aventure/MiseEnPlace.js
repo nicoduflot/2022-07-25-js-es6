@@ -42,11 +42,11 @@ export function fichePerso(perso){
     
     let trHead = cEO('tr', {'class': ['table-dark', 'toto']}, thead);
     let thNom = cEO('th', {}, trHead);
-    cTN('Nom : ', thNom);
+    cTN('Nom', thNom);
     let thPrenom = cEO('th', {}, trHead);
-    cTN('Prénom : ', thPrenom);
+    cTN('Prénom', thPrenom);
     let thClasse = cEO('th', {colspan: 2}, trHead);
-    cTN('Classe : ', thClasse);
+    cTN('Classe', thClasse);
 
     let tBody = cEO('tbody', {}, element);
     
@@ -70,11 +70,11 @@ export function fichePerso(perso){
     
     let trPv = cEO('tr', {}, tBody);
     let thLabelPvB = cEO('th', {}, trPv);
-    cTN('PV Base : ', thLabelPvB);
+    cTN('PV Base', thLabelPvB);
     let tdPvB = cEO('td', {}, trPv);
     cTN(perso.pvBase, tdPvB);
     let thLabelPvA = cEO('th', {}, trPv);
-    cTN('PV actuel : ', thLabelPvA);
+    cTN('PV actuel', thLabelPvA);
     let tdPvA = cEO('td', {}, trPv);
     cTN(perso.pvActuel, tdPvA);
     

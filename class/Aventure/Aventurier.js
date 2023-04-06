@@ -1,4 +1,5 @@
 import Arme from "./Arme.js";
+import Inventaire from "./Inventaire.js";
 
 export default class Aventurier {
     constructor(nom, prenom) {
@@ -6,12 +7,14 @@ export default class Aventurier {
         this.pvBase = 50; this.pvActuel = this.pvBase; this.niveauActuel = 1; this.maxPointsAventure = 5;
         this.sMoney = 50; this.aMoney = this.sMoney;
         this.tauxSoin = 0.2;
-        this.pointsAventure = 5; this.arme = new Arme(); this.inventaire = []; this.inventaire.push(this.arme);
+        this.pointsAventure = 5; this.arme = new Arme();
         this.armor = 0;
         this.maxHeadSlots = 1; this.headSlots = 0; this.maxShieldSlots = 1; this.shieldSlots = 0;
         this.maxPlateSlots = 1; this.plateSlots = 0; this.maxBraceSlots = 2; this.braceSlots = 0;
         this.maxBootSlots = 1; this.bootSlots = 0;
 
+        this.sacADos = new Inventaire();
+        this.sacADos.ajoutElement(this.arme);
 
         /*
         this.maxPotionSlots = 4; this.potionSlots = 0;
@@ -73,18 +76,9 @@ export default class Aventurier {
         }
     }
 
-    ajoutArme(arme) {
-        this.inventaire.push(arme);
-        console.log(`${this.nom} ajoute ${arme.nom} (dg : ${arme.degats}) à son inventaire`);
-    }
-
-    addItem(item) {
-        this.inventaire.push(item);
-        console.log(`${this.prenom} ajoute ${item.nom} (type : ${item.type}) à son inventaire`);
-    }
 
     changerArme(search) {
-        for (let value of this.inventaire) {
+        for (let value of this.sacADos.inventaire) {
             if (value.nom === search) {
                 if (value.constructor.name === 'Arme') {
                     console.log(`${this.prenom} change d'arme`);
@@ -102,11 +96,11 @@ export default class Aventurier {
         item.isEquiped = true;
         if (item.typeBonus === 'armor') {
             this.armor = this.armor + item.valeur;
+            console.log(`${this.prenom} s'équipe avec ${item.nom}, armure : ${this.armor}`);
         }
-        console.log(`${this.prenom} s'équipe avec ${item.nom}`);
     }
-
-    desactiveItem(equipedItem) {
+    
+    desactiveItem(equipedItem, slot) {
         console.log(`${this.prenom} a tous ses  ${equipedItem.type} de complet`);
         equipedItem.isEquiped = false;
         if (equipedItem.typeBonus === 'armor') {
@@ -116,83 +110,88 @@ export default class Aventurier {
     }
 
     equipItem(itemName) {
-        for (let item of this.inventaire) {
+        for (let item of this.sacADos.inventaire) {
             if (item.nom === itemName) {
                 if (item.constructor.name === 'Item') {
                     switch (item.type) {
-                        case 'headSlot':
+                        case 'headSlots':
                             if (this.headSlots < this.maxHeadSlots) {
                                 this.activeItem(item);
                                 this.headSlots = this.headSlots + 1;
                             } else {
-                                for (let equipedItem of this.inventaire) {
+                                for(let equipedItem of this.sacADos.inventaire){
                                     if (equipedItem.type === item.type && equipedItem.isEquiped) {
                                         this.desactiveItem(equipedItem);
                                         this.headSlots = this.headSlots - 1;
                                         break;
                                     }
                                 }
-                                this.equipItem(itemName);
+                                this.activeItem(item);
+                                this.headSlots = this.headSlots + 1;
                             }
                             break;
-                        case 'shieldSlot':
+                        case 'shieldSlots':
                             if (this.shieldSlots < this.maxShieldSlots) {
                                 this.activeItem(item);
                                 this.shieldSlots = this.shieldSlots + 1;
                             } else {
-                                for (let equipedItem of this.inventaire) {
+                                for (let equipedItem of this.sacADos) {
                                     if (equipedItem.type === item.type && equipedItem.isEquiped) {
                                         this.desactiveItem(equipedItem);
                                         this.shieldSlots = this.shieldSlots - 1;
                                         break;
                                     }
                                 }
-                                this.equipItem(itemName);
+                                this.activeItem(item);
+                                this.shieldSlots = this.shieldSlots + 1;
                             }
                             break;
-                        case 'plateSlot':
+                        case 'plateSlots':
                             if (this.plateSlots < this.maxPlateSlots) {
                                 this.activeItem(item);
                                 this.plateSlots = this.plateSlots + 1;
                             } else {
-                                for (let equipedItem of this.inventaire) {
+                                for (let equipedItem of this.sacADos) {
                                     if (equipedItem.type === item.type && equipedItem.isEquiped) {
                                         this.desactiveItem(equipedItem);
                                         this.plateSlots = this.plateSlots - 1;
                                         break;
                                     }
                                 }
-                                this.equipItem(itemName);
+                                this.activeItem(item);
+                                this.plateSlots = this.plateSlots + 1;
                             }
                             break;
-                        case 'braceSlot':
+                        case 'braceSlots':
                             if (this.braceSlots < this.maxBraceSlots) {
                                 this.activeItem(item);
                                 this.braceSlots = this.braceSlots + 1;
                             } else {
-                                for (let equipedItem of this.inventaire) {
+                                for (let equipedItem of this.sacADos) {
                                     if (equipedItem.type === item.type && equipedItem.isEquiped) {
                                         this.desactiveItem(equipedItem);
                                         this.braceSlots = this.braceSlots - 1;
                                         break;
                                     }
                                 }
-                                this.equipItem(itemName);
+                                this.activeItem(item);
+                                this.braceSlots = this.braceSlots + 1;
                             }
                             break;
-                        case 'bootSlot':
+                        case 'bootSlots':
                             if (this.bootSlots < this.maxBootSlots) {
                                 this.activeItem(item);
                                 this.bootSlots = this.bootSlots + 1;
                             } else {
-                                for (let equipedItem of this.inventaire) {
+                                for (let equipedItem of this.sacADos) {
                                     if (equipedItem.type === item.type && equipedItem.isEquiped) {
                                         this.desactiveItem(equipedItem);
                                         this.bootSlots = this.bootSlots - 1;
                                         break;
                                     }
                                 }
-                                this.equipItem(itemName);
+                                this.activeItem(item);
+                                this.bootSlots = this.bootSlots + 1;
                             }
                             break;
                         default:
@@ -239,13 +238,11 @@ export default class Aventurier {
                 message = `${this.prenom} taper ${cible.prenom} : CRIT ! Le coup occasione ${degats} degat(s)`;
         }
         if(degats <= cible.armor && res > 6){
-            message = message + `
-l'armure de la cible (${cible.armor}) absorbe les dg : ${degats}`;
+            message = message + `l'armure de la cible (${cible.armor}) absorbe les dg : ${degats}`;
             degats = 0;
         }else{
             if(cible.armor > 0 && res > 6){
-                message = message + `
-l'armure de ${cible.prenom} absorbe ${cible.armor} dégats`;
+                message = message + `l'armure de ${cible.prenom} absorbe ${cible.armor} dégats`;
             }
             degats = degats - cible.armor;
             cible.modifierPV(-degats);
