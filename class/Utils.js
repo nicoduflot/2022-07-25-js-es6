@@ -114,3 +114,17 @@ export function cTN(content, parent = null){
     }
     return textNode;
 }
+
+/**
+ * supprime tous les meouds enfants
+ * @param {object} node - le noeud dans lequel on supprime tous les enfants
+ */
+
+export function erase_childs(node){
+    if(node.childNodes){
+        let childs = node.childNodes;
+        while(childs.length > 0){
+            node.removeChild(node.lastChild);
+        }
+    }
+}

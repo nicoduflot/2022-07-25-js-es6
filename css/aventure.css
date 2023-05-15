@@ -7,3 +7,24 @@
 h1, h2, h3, h4, h5, h6{
     font-family: var(--heading-font);
 }
+
+.jaune {
+	background-color: #fdf1dc;
+	padding: 10px 8px 5px 8px;
+	margin: 0 2px 0 2px;
+	box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.5);
+	background-image: url("../images/aventure/fond-mm-effet.png"), url("../images/aventure/fond-ph.jpg");
+	background-repeat: no-repeat, repeat;
+}
+
+.bigRedBorder{
+    border-bottom: 3px solid #922610;
+}
+
+.bigRedBorder:first-child{
+    border-top: 3px solid #922610;
+}
+
+.smallRedBorder{
+    border-bottom: 1px solid #922610;
+}

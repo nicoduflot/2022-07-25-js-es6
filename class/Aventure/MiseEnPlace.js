@@ -36,11 +36,10 @@ export function createP(prenom, nom, classe){
 }
 
 export function fichePerso(perso){
-    let element = cEO('table', {'class': ['table']});
-    
+    let div = cEO('div', {class: ['jaune', 'card']});
+    let element = cEO('table', {'class': ['table']}, div);
     let thead= cEO('thead', {}, element);
-    
-    let trHead = cEO('tr', {'class': ['table-dark', 'toto']}, thead);
+    let trHead = cEO('tr', {class: ['bigRedBorder']}, thead);
     let thNom = cEO('th', {}, trHead);
     cTN('Nom', thNom);
     let thPrenom = cEO('th', {}, trHead);
@@ -50,7 +49,7 @@ export function fichePerso(perso){
 
     let tBody = cEO('tbody', {}, element);
     
-    let trIdentite = cEO('tr', {}, tBody);
+    let trIdentite = cEO('tr', {class: ['smallRedBorder']}, tBody);
     let tdNom = cEO('td', {}, trIdentite);
     cTN(perso.nom, tdNom);
     let tdPrenom = cEO('td', {}, trIdentite);
@@ -58,7 +57,7 @@ export function fichePerso(perso){
     let tdClasse = cEO('td', {colspan: 2}, trIdentite);
     cTN(perso.constructor.name, tdClasse);
     
-    let trSkills = cEO('tr', {}, tBody);
+    let trSkills = cEO('tr', {class: ['smallRedBorder']}, tBody);
     let thLabelB = cEO('th', {}, trSkills);
     cTN('Bagarre', thLabelB);
     let tdValB = cEO('td', {}, trSkills);
@@ -68,7 +67,7 @@ export function fichePerso(perso){
     let tdValC = cEO('td', {}, trSkills);
     cTN(perso.cerveau, tdValC);
     
-    let trPv = cEO('tr', {}, tBody);
+    let trPv = cEO('tr', {class: ['smallRedBorder']}, tBody);
     let thLabelPvB = cEO('th', {}, trPv);
     cTN('PV Base', thLabelPvB);
     let tdPvB = cEO('td', {}, trPv);
@@ -78,16 +77,16 @@ export function fichePerso(perso){
     let tdPvA = cEO('td', {}, trPv);
     cTN(perso.pvActuel, tdPvA);
     
-    let trArme = cEO('tr', {}, tBody);
+    let trArme = cEO('tr', {class: ['bigRedBorder']}, tBody);
     let thArme = cEO('th', {colspan: 2}, trArme);
-    cTN('Arme', thArme);
+    cTN('Arme équipée', thArme);
     let tdArme = cEO('td', {colspan: 2}, trArme);
     cTN(perso.arme.nom, tdArme);
     cTN(', ', tdArme);
     cTN(perso.arme.degats, tdArme);
     cTN(' dg base', tdArme);
     
-    return element;
+    return div;
 }
 
 export function fichePersoConsole(personnage){

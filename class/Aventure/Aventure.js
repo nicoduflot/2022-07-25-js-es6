@@ -4,15 +4,16 @@ import Voleur from './Voleur.js';
 import Mage from './Mage.js';
 import Arme from './Arme.js';
 import Item from './Item.js';
-import loaded, { s, sAll, q } from '../Utils.js';
+import loaded, { s, sAll, q, erase_childs } from '../Utils.js';
 import { randClasse, createP, fichePerso, fichePersoConsole } from './MiseEnPlace.js';
 loaded(function () {
+    /*
     let lAventurier = new Aventurier('Le barbare', 'Conan');
     let casque = new Item('Casque à corne', 'headSlot', 'armor', 2, false);
     let casquePlus = new Item('Casque à corne en fer', 'headSlot', 'armor', 2, false);
     let brassard = new Item('Brassard', 'braceSlot', 'armor', 1, false);
     let glaive = new Arme('Glaive', 15, { nom: 'Brulûre' });
-    /*
+
     console.log(lAventurier.sacADos.ajoutElement(brassard));
     console.log(lAventurier.sacADos.ajoutElement(casque));
     console.log(lAventurier.sacADos.ajoutElement(casquePlus));
@@ -21,22 +22,21 @@ loaded(function () {
     console.log('');
     console.log(lAventurier.sacADos.retireElement(casque));
     console.log('');
-    */
-   
-   lAventurier.sacADos.ajoutElement(new Arme('Glaive', 15, {nom: 'Brûlure', dgSup: 10}))
-   lAventurier.changerArme('Glaive');
-   
-   lAventurier.sacADos.ajoutElement(new Item('Casque à corne', 'headSlots', 'armor', 2, false));
-   lAventurier.equipItem('Casque à corne');
-   
-   console.log('test bagarre', lAventurier.testSkill('bagarre'));
-   console.log('test cerveau', lAventurier.testSkill('cerveau'));
-   console.log('');
-   lAventurier.sacADos.ajoutElement(new Item('Casque à corne en fer', 'headSlots', 'armor', 5, false));
-   lAventurier.equipItem('Casque à corne en fer');
-   console.log(fichePersoConsole(lAventurier));
-   console.log('');
-   q('#inventaireConsole').append(lAventurier.sacADos.afficherInventaire());
+
+    lAventurier.sacADos.ajoutElement(new Arme('Glaive', 15, { nom: 'Brûlure', dgSup: 10 }))
+    lAventurier.changerArme('Glaive');
+
+    lAventurier.sacADos.ajoutElement(new Item('Casque à corne', 'headSlots', 'armor', 2, false));
+    lAventurier.equipItem('Casque à corne');
+
+    console.log('test bagarre', lAventurier.testSkill('bagarre'));
+    console.log('test cerveau', lAventurier.testSkill('cerveau'));
+    console.log('');
+    lAventurier.sacADos.ajoutElement(new Item('Casque à corne en fer', 'headSlots', 'armor', 5, false));
+    lAventurier.equipItem('Casque à corne en fer');
+    console.log(fichePersoConsole(lAventurier));
+    console.log('');
+    q('#inventaireConsole').append(lAventurier.sacADos.afficherInventaire());
     let leMechant = new Mage('Le sorcier', 'Profion');
     console.log(fichePersoConsole(leMechant));
     console.log('test bagarre', leMechant.testSkill('bagarre'));
@@ -83,20 +83,24 @@ loaded(function () {
 
     leMage.multi(leMechant);
 
-
+*/
     let gentil = null;
     let mechant = null;
-    s('#createP').addEventListener('click', function () {
-        gentil = createP(s('#prenomP').value, s('#nomP').value, s('#classeP').value);
-        s('#ficheP').append(fichePerso(gentil));
+    q('#createP').addEventListener('click', function () {
+        gentil = createP(q('#prenomP').value, q('#nomP').value, q('#classeP').value);
+        erase_childs(q('#ficheP'));
+        q('#ficheP').append(fichePerso(gentil));
         console.log(fichePersoConsole(gentil));
+        erase_childs(q('#inventaireHeros'));
         q('#inventaireHeros').append(gentil.sacADos.afficherInventaire());
     });
-
+    
     s('#createE').addEventListener('click', function () {
-        mechant = createP(s('#prenomE').value, s('#nomE').value, randClasse());
+        mechant = createP(q('#prenomE').value, q('#nomE').value, randClasse());
+        erase_childs(s('#ficheE'));
         s('#ficheE').append(fichePerso(mechant));
         console.log(fichePersoConsole(mechant));
+        erase_childs(q('#inventaireMechant'));
         q('#inventaireMechant').append(mechant.sacADos.afficherInventaire());
     });
 });
