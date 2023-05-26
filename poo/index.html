@@ -163,7 +163,7 @@
                 // il faut un constructeur, il doit être semblable à celui de voiture
                 constructor(marque, modele, couleur){
                     super(marque, modele, couleur);
-                    if('Blanc'.toLocaleLowerCase() !== this.couleur.toLocaleLowerCase()){
+                    if('Blanc'.toLowerCase() !== this.couleur.toLowerCase()){
                         this.couleur = 'Blanc';
                     }
                     this.sirene = false;

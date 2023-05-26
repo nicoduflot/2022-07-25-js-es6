@@ -4,10 +4,10 @@ import Voleur from './Voleur.js';
 import Mage from './Mage.js';
 import Arme from './Arme.js';
 import Item from './Item.js';
-import loaded, { s, sAll, q, erase_childs } from '../Utils.js';
+import loaded, { q, erase_childs } from '../Utils.js';
 import { randClasse, createP, fichePerso, fichePersoConsole } from './MiseEnPlace.js';
 loaded(function () {
-    /*
+    
     let lAventurier = new Aventurier('Le barbare', 'Conan');
     let casque = new Item('Casque à corne', 'headSlot', 'armor', 2, false);
     let casquePlus = new Item('Casque à corne en fer', 'headSlot', 'armor', 2, false);
@@ -83,7 +83,7 @@ loaded(function () {
 
     leMage.multi(leMechant);
 
-*/
+
     let gentil = null;
     let mechant = null;
     q('#createP').addEventListener('click', function () {
@@ -95,10 +95,10 @@ loaded(function () {
         q('#inventaireHeros').append(gentil.sacADos.afficherInventaire());
     });
     
-    s('#createE').addEventListener('click', function () {
+    q('#createE').addEventListener('click', function () {
         mechant = createP(q('#prenomE').value, q('#nomE').value, randClasse());
-        erase_childs(s('#ficheE'));
-        s('#ficheE').append(fichePerso(mechant));
+        erase_childs(q('#ficheE'));
+        q('#ficheE').append(fichePerso(mechant));
         console.log(fichePersoConsole(mechant));
         erase_childs(q('#inventaireMechant'));
         q('#inventaireMechant').append(mechant.sacADos.afficherInventaire());

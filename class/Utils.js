@@ -3,15 +3,6 @@ export default function loaded(callable){
     window.addEventListener('DOMContentLoaded', callable);
 }
 
-/* raccourci de querySelector */
-function s(selector){
-    return document.querySelector(selector);
-}
-
-function sAll(selector){
-    return document.querySelectorAll(selector);
-}
-
 /**
  * récupère un élément du DOM 
  * ou 
@@ -24,7 +15,7 @@ function q(selector){
     return (collection.length > 1)? collection : collection[0];
 }
 
-export {s, sAll, q};
+export {q};
 
 /*
 création - modification et suppression d'un cookie
@@ -116,10 +107,9 @@ export function cTN(content, parent = null){
 }
 
 /**
- * supprime tous les meouds enfants
+ * supprime tous les neouds enfants
  * @param {object} node - le noeud dans lequel on supprime tous les enfants
  */
-
 export function erase_childs(node){
     if(node.childNodes){
         let childs = node.childNodes;
