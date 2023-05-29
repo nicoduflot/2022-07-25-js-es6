@@ -30,7 +30,7 @@ export default class Mage extends Aventurier{
             console.log(`multi sur ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
             this.pointsAventure = this.pointsAventure - 1;
         }else{
-            console.log(`${this.prenom} n'a plus assez de point d'aventure pour lancer son multi`);
+            console.log(`${this.prenom} n'a plus assez de point d'aventure pour lancer sa boule de feu`);
             this.corpsACorps(cible);
         }
         cible.checkHealth();

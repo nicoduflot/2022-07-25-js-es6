@@ -21,11 +21,11 @@ export default class Guerrier extends Aventurier{
             this.arme.degats = this.arme.degats/this.tauxMulti;
             console.log(`multi sur ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
             this.pointsAventure = this.pointsAventure - 1;
+            cible.checkHealth();
         }else{
-            console.log(`${this.prenom} n'a plus assez de point d'aventure pour lancer son multi`);
+            console.log(`${this.prenom} n'a plus assez de point d'aventure pour lancer son attaque puissante`);
             this.corpsACorps(cible);
         }
-        cible.checkHealth();
     }
 
     changerNiveau(){

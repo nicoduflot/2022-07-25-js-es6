@@ -226,10 +226,10 @@ export default class Aventurier {
                 message = `${this.prenom} taper ${cible.prenom} : Le coup est raté`;
                 break;
             case (res > 6 && res < 10):
-                degats = Math.ceil(this.arme.degats / 2);
+                degats = Math.floor(this.arme.degats / 2);
                 message = `${this.prenom} taper ${cible.prenom} : le coup occasionne la moitié des dégats : ${degats}`;
                 break;
-            case (res > 9 && res < 12):
+            case (res > 9 && res < 14):
                 degats = this.arme.degats;
                 message = `${this.prenom} taper ${cible.prenom} : le coup occasionne ${degats} degat(s)`;
                 break;

@@ -12,18 +12,17 @@ loaded(function () {
     let casque = new Item('Casque à corne', 'headSlot', 'armor', 2, false);
     let casquePlus = new Item('Casque à corne en fer', 'headSlot', 'armor', 2, false);
     let brassard = new Item('Brassard', 'braceSlot', 'armor', 1, false);
-    let glaive = new Arme('Glaive', 15, { nom: 'Brulûre' });
 
     console.log(lAventurier.sacADos.ajoutElement(brassard));
     console.log(lAventurier.sacADos.ajoutElement(casque));
     console.log(lAventurier.sacADos.ajoutElement(casquePlus));
-    console.log(lAventurier.sacADos.ajoutElement(glaive));
-
+    
     console.log('');
     console.log(lAventurier.sacADos.retireElement(casque));
     console.log('');
-
+    
     lAventurier.sacADos.ajoutElement(new Arme('Glaive', 15, { nom: 'Brûlure', dgSup: 10 }))
+    q('#inventaireConsole').append(lAventurier.sacADos.afficherInventaire());
     lAventurier.changerArme('Glaive');
 
     lAventurier.sacADos.ajoutElement(new Item('Casque à corne', 'headSlots', 'armor', 2, false));
@@ -36,7 +35,6 @@ loaded(function () {
     lAventurier.equipItem('Casque à corne en fer');
     console.log(fichePersoConsole(lAventurier));
     console.log('');
-    q('#inventaireConsole').append(lAventurier.sacADos.afficherInventaire());
     let leMechant = new Mage('Le sorcier', 'Profion');
     console.log(fichePersoConsole(leMechant));
     console.log('test bagarre', leMechant.testSkill('bagarre'));

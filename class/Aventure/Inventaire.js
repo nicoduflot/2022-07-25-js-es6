@@ -5,7 +5,9 @@ export default class Inventaire{
     }
 
     ajoutElement(element){
+        console.log('avant ajout ',this.inventaire);
         this.inventaire.push(element);
+        console.log('après ajout ',this.inventaire);
         let message = `objet du type ${element.constructor.name} ajouté : ${element.nom}`;
         return message;
     }
@@ -15,7 +17,9 @@ export default class Inventaire{
         this.inventaire.find((item, index)=>{
             if(item === element){
                 message = `Élément du type ${element.constructor.name} : ${element.nom} trouvé a retirer de l'inventaire`;
+                console.log('avant retire ',this.inventaire);
                 this.inventaire.splice(index, 1);
+                console.log('après retire ',this.inventaire);
                 return message;
             }
         });

@@ -28,7 +28,7 @@ export default class Voleur extends Aventurier{
             console.log(`multi sur ${cible.prenom} à ${cible.pvActuel} / ${cible.pvBase}`);
             this.pointsAventure = this.pointsAventure - 1;
         }else{
-            console.log(`${this.prenom} n'a plus assez de point d'aventure pour lancer son multi`);
+            console.log(`${this.prenom} n'a plus assez de point d'aventure pour lancer son attaque sournoise`);
             this.corpsACorps(cible);
         }
         cible.checkHealth();
